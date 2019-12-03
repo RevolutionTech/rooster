@@ -1,5 +1,5 @@
-# Created by https://www.gitignore.io/api/macos,django,python,pycharm+all
-# Edit at https://www.gitignore.io/?templates=macos,django,python,pycharm+all
+# Created by https://www.gitignore.io/api/macos,python,dotenv,django,pycharm+all
+# Edit at https://www.gitignore.io/?templates=macos,python,dotenv,django,pycharm+all
 
 ### Django ###
 *.log
@@ -18,7 +18,7 @@ media
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
 *.py[cod]
-*.class
+*$py.class
 
 # C extensions
 *.so
@@ -118,13 +118,16 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+### dotenv ###
+.env
+
 ### macOS ###
 # General
 .DS_Store
 .AppleDouble
 .LSOverride
 
-# Icon must end with two 
+# Icon must end with two \r
 Icon
 
 # Thumbnails
@@ -279,5 +282,4 @@ modules.xml
 
 # Pyre type checker
 
-# End of https://www.gitignore.io/api/macos,django,python,pycharm+all
-
+# End of https://www.gitignore.io/api/macos,python,dotenv,django,pycharm+all

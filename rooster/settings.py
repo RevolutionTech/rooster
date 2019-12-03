@@ -5,14 +5,16 @@ Django settings for rooster project.
 
 import os
 
-from configurations import Configuration
+from configurations import Configuration, values
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class BaseConfig(Configuration):
+    DOTENV = os.path.join(BASE_DIR, '.env')
 
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-    SECRET_KEY = 'k-_!rno8o714xs1@fw0f1rg^j)wa-7%&n0d_vj5^4r+(b3kzb1'
+    SECRET_KEY = values.SecretValue()
     DEBUG = True
     ALLOWED_HOSTS = []
 
