@@ -26,6 +26,7 @@ class BaseConfig(Configuration):
         "django.contrib.sessions",
         "django.contrib.messages",
         "django.contrib.staticfiles",
+        "social_django",
         "github.apps.GithubConfig",
     ]
     MIDDLEWARE = [
@@ -65,8 +66,8 @@ class BaseConfig(Configuration):
         }
     }
 
-    # Password validation
-    # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+    # Authentication
+    AUTHENTICATION_BACKENDS = ["social_core.backends.github.GithubOAuth2"]
     AUTH_PASSWORD_VALIDATORS = [
         {
             "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
@@ -75,6 +76,10 @@ class BaseConfig(Configuration):
         {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
         {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
     ]
+    SOCIAL_AUTH_GITHUB_KEY = values.SecretValue()
+    SOCIAL_AUTH_GITHUB_SECRET = values.SecretValue()
+    LOGIN_URL = "/login/github/"
+    LOGIN_REDIRECT_URL = "/"
 
     # Internationalization
     # https://docs.djangoproject.com/en/3.0/topics/i18n/
