@@ -2,4 +2,11 @@
 
 {% block content %}
     <h1>Profile</h1>
+
+    <h3>Pull Requests</h3>
+    <ul>
+        {% for pr in pull_requests %}
+            <p><strong>{{ pr.repo_name }}</strong>: {{ pr.title }}</p>
+        {% endfor %}
+    </ul>
 {% endblock %}

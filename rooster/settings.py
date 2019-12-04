@@ -27,6 +27,7 @@ class BaseConfig(Configuration):
         "django.contrib.messages",
         "django.contrib.staticfiles",
         "social_django",
+        "githubapi.apps.GithubApiConfig",
         "profile.apps.ProfileConfig",
     ]
     MIDDLEWARE = [
@@ -78,6 +79,7 @@ class BaseConfig(Configuration):
     ]
     SOCIAL_AUTH_GITHUB_KEY = values.SecretValue()
     SOCIAL_AUTH_GITHUB_SECRET = values.SecretValue()
+    SOCIAL_AUTH_GITHUB_SCOPE = ["repo"]
     LOGIN_URL = "/login/github/"
     LOGIN_REDIRECT_URL = "/"
 

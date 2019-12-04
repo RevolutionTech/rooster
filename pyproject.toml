@@ -10,6 +10,7 @@ python = "^3.6"
 Django = "~2.2"
 django-configurations = "^2.1"
 social-auth-app-django = "^3.1"
+PyGithub = "^1.44"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^18.3-alpha.0", allows-prereleases = true}
