@@ -27,7 +27,7 @@ class BaseConfig(Configuration):
         "django.contrib.messages",
         "django.contrib.staticfiles",
         "social_django",
-        "github.apps.GithubConfig",
+        "profile.apps.ProfileConfig",
     ]
     MIDDLEWARE = [
         "django.middleware.security.SecurityMiddleware",
