@@ -8,8 +8,8 @@ class GithubAPI:
         user_social_auth = user.social_auth.get()
         access_token = user_social_auth.get_access_token(strategy)
         self.api = Github(access_token)
-        self.github_authenticated_user = self.api.get_user()
-        self.github_named_user = self.api.get_user(self.github_authenticated_user.login)
+        github_authenticated_user = self.api.get_user()
+        self.github_named_user = self.api.get_user(github_authenticated_user.login)
 
     def get_pull_requests(self):
         for event in self.github_named_user.get_events():

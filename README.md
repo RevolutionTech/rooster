@@ -1,6 +1,9 @@
 # Rooster
 #### A tool to review activity on GitHub for daily standup
 
+[![Build Status](https://travis-ci.com/RevolutionTech/rooster.svg?branch=master)](https://travis-ci.com/RevolutionTech/rooster)
+[![codecov](https://codecov.io/gh/RevolutionTech/rooster/branch/master/graph/badge.svg)](https://codecov.io/gh/RevolutionTech/rooster)
+
 ## Setup
 
 ### Installation
