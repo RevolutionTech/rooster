@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Profile</h1>
-
-    <h3>Pull Requests</h3>
-    <ul>
-        {% for pr in pull_requests %}
-            <p><strong>{{ pr.repo_name }}</strong>: {{ pr.title }}</p>
+    {% regroup events by created_at.date as events_by_day %}
+    {% for date in events_by_day %}
+        <h2>{{ date.grouper }}</h2>
+        {% regroup date.list by subheader as events_by_subheader %}
+        {% for subheader in events_by_subheader %}
+            <h3>{{ subheader.grouper }}</h3>
+            <ul>
+                {% for event in subheader.list %}
+                    <li><strong>{{ event.repo_name }}</strong>: {{ event.title }}</li>
+                {% endfor %}
+            </ul>
         {% endfor %}
-    </ul>
+    {% endfor %}
 {% endblock %}

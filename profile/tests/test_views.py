@@ -1,6 +1,8 @@
+import datetime
 from http import HTTPStatus
 from unittest import mock
 
+import pytz
 from django.test import TestCase
 
 from rooster.factories import UserFactory
@@ -8,14 +10,24 @@ from rooster.factories import UserFactory
 
 class TestProfileView(TestCase):
     @mock.patch(
-        "profile.views.GithubAPI.get_pull_requests",
+        "profile.views.GithubAPI.get_events",
         return_value=[
-            {"repo_name": "jsmith/foo", "title": "Add bar"},
-            {"repo_name": "jsmith/foo", "title": "Add baz"},
+            {
+                "created_at": datetime.datetime(2019, 3, 1, tzinfo=pytz.utc),
+                "subheader": "Pull Requests",
+                "repo_name": "jsmith/foo",
+                "title": "Add baz",
+            },
+            {
+                "created_at": datetime.datetime(2019, 1, 1, tzinfo=pytz.utc),
+                "subheader": "Pull Requests",
+                "repo_name": "jsmith/foo",
+                "title": "Add bar",
+            },
         ],
     )
     @mock.patch("profile.views.GithubAPI.__init__", return_value=None)
-    def test_get_profile(self, mock_githubapi_init, mock_get_pull_requests):
+    def test_get_profile(self, mock_githubapi_init, mock_get_events):
         user = UserFactory()
         self.client.force_login(user)
 
@@ -23,4 +35,4 @@ class TestProfileView(TestCase):
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
         mock_githubapi_init.assert_called_once_with(user)
-        mock_get_pull_requests.assert_called_once()
+        mock_get_events.assert_called_once()

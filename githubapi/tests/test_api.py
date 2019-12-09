@@ -1,14 +1,17 @@
+import datetime
 from unittest import mock
 
+import pytz
 from django.test import TestCase
 
 from githubapi.api import GithubAPI
 from rooster.factories import UserFactory
 
 
-class TestGetPullRequests(TestCase):
+class TestGetEvents(TestCase):
     @mock.patch("githubapi.api.Github.get_user")
-    def test_get_pull_requests(self, mock_get_user):
+    def test_get_events(self, mock_get_user):
+        pr_created_dt = datetime.datetime(2019, 1, 1, tzinfo=pytz.utc)
         project_name = "Project Name"
         pr_title = "PR Title"
         mock_project = mock.Mock()
@@ -18,6 +21,7 @@ class TestGetPullRequests(TestCase):
             mock.Mock(
                 get_events=lambda: [
                     mock.Mock(
+                        created_at=pr_created_dt,
                         type="PullRequestEvent",
                         repo=mock_project,
                         payload={"pull_request": {"title": pr_title}},
@@ -30,8 +34,15 @@ class TestGetPullRequests(TestCase):
         user = UserFactory()
         api = GithubAPI(user)
 
-        expected_list = [{"repo_name": project_name, "title": pr_title}]
+        expected_list = [
+            {
+                "created_at": pr_created_dt,
+                "subheader": "Pull Requests",
+                "repo_name": project_name,
+                "title": pr_title,
+            }
+        ]
 
-        pull_requests = api.get_pull_requests()
-        for actual, expected in zip(pull_requests, expected_list):
+        events = api.get_events()
+        for actual, expected in zip(events, expected_list):
             self.assertEqual(actual, expected)

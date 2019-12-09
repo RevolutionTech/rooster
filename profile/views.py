@@ -11,6 +11,6 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
 
         api = GithubAPI(self.request.user)
-        context["pull_requests"] = api.get_pull_requests()
+        context["events"] = api.get_events()
 
         return context
