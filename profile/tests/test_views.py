@@ -14,6 +14,12 @@ class TestProfileView(TestCase):
         return_value=[
             {
                 "created_at": datetime.datetime(2019, 3, 1, tzinfo=pytz.utc),
+                "subheader": "PR Reviews",
+                "repo_name": "jsmith/alpha",
+                "title": "Finish beta",
+            },
+            {
+                "created_at": datetime.datetime(2019, 3, 1, tzinfo=pytz.utc),
                 "subheader": "Pull Requests",
                 "repo_name": "jsmith/foo",
                 "title": "Add baz",

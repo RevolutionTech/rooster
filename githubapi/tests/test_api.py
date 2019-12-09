@@ -14,6 +14,7 @@ class TestGetEvents(TestCase):
         pr_created_dt = datetime.datetime(2019, 1, 1, tzinfo=pytz.utc)
         project_name = "Project Name"
         pr_title = "PR Title"
+        other_pr_title = "Other PR"
         mock_project = mock.Mock()
         mock_project.name = project_name
         mock_get_user.side_effect = [
@@ -21,12 +22,18 @@ class TestGetEvents(TestCase):
             mock.Mock(
                 get_events=lambda: [
                     mock.Mock(
+                        created_at=pr_created_dt + datetime.timedelta(hours=2),
+                        type="PullRequestReviewCommentEvent",
+                        repo=mock_project,
+                        payload={"pull_request": {"title": other_pr_title}},
+                    ),
+                    mock.Mock(type="IrrelevantEvent"),
+                    mock.Mock(
                         created_at=pr_created_dt,
                         type="PullRequestEvent",
                         repo=mock_project,
                         payload={"pull_request": {"title": pr_title}},
                     ),
-                    mock.Mock(type="IrrelevantEvent"),
                 ]
             ),
         ]
@@ -36,11 +43,17 @@ class TestGetEvents(TestCase):
 
         expected_list = [
             {
+                "created_at": pr_created_dt + datetime.timedelta(hours=2),
+                "subheader": "PR Reviews",
+                "repo_name": project_name,
+                "title": other_pr_title,
+            },
+            {
                 "created_at": pr_created_dt,
                 "subheader": "Pull Requests",
                 "repo_name": project_name,
                 "title": pr_title,
-            }
+            },
         ]
 
         events = api.get_events()
