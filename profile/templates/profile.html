@@ -9,7 +9,10 @@
             <h3>{{ subheader.grouper }}</h3>
             <ul>
                 {% for event in subheader.list %}
-                    <li><strong>{{ event.repo_name }}</strong>: {{ event.title }}</li>
+                    <li>
+                        <a href="{{ event.repo.url }}"><strong>{{ event.repo.name }}</strong></a>:
+                        {{ event.pull_request.title }}
+                    </li>
                 {% endfor %}
             </ul>
         {% endfor %}

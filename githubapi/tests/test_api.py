@@ -15,7 +15,11 @@ class TestGetEvents(TestCase):
         project_name = "Project Name"
         pr_title = "PR Title"
         other_pr_title = "Other PR"
-        mock_project = mock.Mock()
+
+        user = UserFactory()
+
+        repo_url = f"https://github.com/repos/{user.username}/project-name"
+        mock_project = mock.Mock(html_url=repo_url)
         mock_project.name = project_name
         mock_get_user.side_effect = [
             mock.Mock(login="jsmith"),
@@ -38,21 +42,20 @@ class TestGetEvents(TestCase):
             ),
         ]
 
-        user = UserFactory()
         api = GithubAPI(user)
 
         expected_list = [
             {
                 "created_at": pr_created_dt + datetime.timedelta(hours=2),
                 "subheader": "PR Reviews",
-                "repo_name": project_name,
-                "title": other_pr_title,
+                "repo": {"name": project_name, "url": repo_url},
+                "pull_request": {"title": other_pr_title},
             },
             {
                 "created_at": pr_created_dt,
                 "subheader": "Pull Requests",
-                "repo_name": project_name,
-                "title": pr_title,
+                "repo": {"name": project_name, "url": repo_url},
+                "pull_request": {"title": pr_title},
             },
         ]
 

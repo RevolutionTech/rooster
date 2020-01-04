@@ -15,20 +15,29 @@ class TestProfileView(TestCase):
             {
                 "created_at": datetime.datetime(2019, 3, 1, tzinfo=pytz.utc),
                 "subheader": "PR Reviews",
-                "repo_name": "jsmith/alpha",
-                "title": "Finish beta",
+                "repo": {
+                    "name": "jsmith/alpha",
+                    "url": "https://github.com/repos/jsmith/alpha",
+                },
+                "pull_request": {"title": "Finish beta"},
             },
             {
                 "created_at": datetime.datetime(2019, 3, 1, tzinfo=pytz.utc),
                 "subheader": "Pull Requests",
-                "repo_name": "jsmith/foo",
-                "title": "Add baz",
+                "repo": {
+                    "name": "jsmith/foo",
+                    "url": "https://github.com/repos/jsmith/foo",
+                },
+                "pull_request": {"title": "Add baz"},
             },
             {
                 "created_at": datetime.datetime(2019, 1, 1, tzinfo=pytz.utc),
                 "subheader": "Pull Requests",
-                "repo_name": "jsmith/foo",
-                "title": "Add bar",
+                "repo": {
+                    "name": "jsmith/foo",
+                    "url": "https://github.com/repos/jsmith/foo",
+                },
+                "pull_request": {"title": "Add bar"},
             },
         ],
     )

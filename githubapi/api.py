@@ -21,15 +21,17 @@ class GithubAPI:
 
         for github_event in self.github_named_user.get_events():
             if github_event.type in self.SUBHEADER_FROM_EVENT_TYPE:
+                repo = github_event.repo
                 payload = github_event.payload
-                pr_title = payload["pull_request"]["title"]
+                pull_request = payload["pull_request"]
+                pr_title = pull_request["title"]
 
                 all_events.append(
                     {
                         "created_at": github_event.created_at,
                         "subheader": self.SUBHEADER_FROM_EVENT_TYPE[github_event.type],
-                        "repo_name": github_event.repo.name,
-                        "title": pr_title,
+                        "repo": {"name": repo.name, "url": repo.html_url},
+                        "pull_request": {"title": pr_title},
                     }
                 )
 
