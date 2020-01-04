@@ -1,13 +1,10 @@
 from github import Github
 from social_django.utils import load_strategy
 
+from githubapi.events import event_type_from_github_event
+
 
 class GithubAPI:
-    SUBHEADER_FROM_EVENT_TYPE = {
-        "PullRequestEvent": "Pull Requests",
-        "PullRequestReviewCommentEvent": "PR Reviews",
-    }
-
     def __init__(self, user):
         strategy = load_strategy()
         user_social_auth = user.social_auth.get()
@@ -20,7 +17,8 @@ class GithubAPI:
         all_events = []
 
         for github_event in self.github_named_user.get_events():
-            if github_event.type in self.SUBHEADER_FROM_EVENT_TYPE:
+            event_type = event_type_from_github_event(github_event)
+            if event_type:
                 repo = github_event.repo
                 payload = github_event.payload
                 pull_request = payload["pull_request"]
@@ -29,7 +27,7 @@ class GithubAPI:
                 all_events.append(
                     {
                         "created_at": github_event.created_at,
-                        "subheader": self.SUBHEADER_FROM_EVENT_TYPE[github_event.type],
+                        "subheader": event_type.subheader,
                         "repo": {"name": repo.name, "url": repo.html_url},
                         "pull_request": {"title": pr_title},
                     }

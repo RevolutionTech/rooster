@@ -29,14 +29,20 @@ class TestGetEvents(TestCase):
                         created_at=pr_created_dt + datetime.timedelta(hours=2),
                         type="PullRequestReviewCommentEvent",
                         repo=mock_project,
-                        payload={"pull_request": {"title": other_pr_title}},
+                        payload={
+                            "action": "created",
+                            "pull_request": {"title": other_pr_title},
+                        },
                     ),
                     mock.Mock(type="IrrelevantEvent"),
                     mock.Mock(
                         created_at=pr_created_dt,
                         type="PullRequestEvent",
                         repo=mock_project,
-                        payload={"pull_request": {"title": pr_title}},
+                        payload={
+                            "action": "opened",
+                            "pull_request": {"title": pr_title},
+                        },
                     ),
                 ]
             ),
