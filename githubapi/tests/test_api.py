@@ -21,8 +21,12 @@ class TestGetEvents(TestCase):
         repo_url = f"https://github.com/repos/{user.username}/project-name"
         mock_project = mock.Mock(html_url=repo_url)
         mock_project.name = project_name
+        mock_jsmith = mock.Mock(login="jsmith")
+        mock_jsmith.name = "John Smith"
+        mock_mdoe = mock.Mock(login="mdoe")
+        mock_mdoe.name = "Mary Doe"
         mock_get_user.side_effect = [
-            mock.Mock(login="jsmith"),
+            mock_jsmith,
             mock.Mock(
                 get_events=lambda: [
                     mock.Mock(
@@ -35,6 +39,7 @@ class TestGetEvents(TestCase):
                                 "id": 101,
                                 "title": other_pr_title,
                                 "html_url": f"{repo_url}/pulls/101",
+                                "user": {"login": "mdoe"},
                             },
                         },
                     ),
@@ -49,11 +54,14 @@ class TestGetEvents(TestCase):
                                 "id": 100,
                                 "title": pr_title,
                                 "html_url": f"{repo_url}/pulls/100",
+                                "user": {"login": "jsmith"},
                             },
                         },
                     ),
                 ]
             ),
+            mock_mdoe,
+            mock_jsmith,
         ]
 
         api = GithubAPI(user)
@@ -66,13 +74,18 @@ class TestGetEvents(TestCase):
                 "pull_request": {
                     "title": other_pr_title,
                     "url": f"{repo_url}/pulls/101",
+                    "author": "Mary Doe",
                 },
             },
             {
                 "created_at": pr_created_dt,
                 "subheader": "Pull Requests",
                 "repo": {"name": project_name, "url": repo_url},
-                "pull_request": {"title": pr_title, "url": f"{repo_url}/pulls/100"},
+                "pull_request": {
+                    "title": pr_title,
+                    "url": f"{repo_url}/pulls/100",
+                    "author": "John Smith",
+                },
             },
         ]
 
@@ -90,8 +103,12 @@ class TestGetEvents(TestCase):
         repo_url = f"https://github.com/repos/{user.username}/project-name"
         mock_project = mock.Mock(html_url=repo_url)
         mock_project.name = project_name
+        mock_jsmith = mock.Mock(login="jsmith")
+        mock_jsmith.name = "John Smith"
+        mock_mdoe = mock.Mock(login="mdoe")
+        mock_mdoe.name = "Mary Doe"
         mock_get_user.side_effect = [
-            mock.Mock(login="jsmith"),
+            mock_jsmith,
             mock.Mock(
                 get_events=lambda: [
                     mock.Mock(
@@ -104,6 +121,7 @@ class TestGetEvents(TestCase):
                                 "id": 100,
                                 "title": pr_title,
                                 "html_url": f"{repo_url}/pulls/100",
+                                "user": {"login": "mdoe"},
                             },
                         },
                     ),
@@ -117,11 +135,14 @@ class TestGetEvents(TestCase):
                                 "id": 100,
                                 "title": pr_title,
                                 "html_url": f"{repo_url}/pulls/100",
+                                "user": {"login": "mdoe"},
                             },
                         },
                     ),
                 ]
             ),
+            mock_mdoe,
+            mock_mdoe,
         ]
 
         api = GithubAPI(user)
@@ -131,7 +152,11 @@ class TestGetEvents(TestCase):
                 "created_at": pr_created_dt,
                 "subheader": "PR Reviews",
                 "repo": {"name": project_name, "url": repo_url},
-                "pull_request": {"title": pr_title, "url": f"{repo_url}/pulls/100"},
+                "pull_request": {
+                    "title": pr_title,
+                    "url": f"{repo_url}/pulls/100",
+                    "author": "Mary Doe",
+                },
             }
         ]
 

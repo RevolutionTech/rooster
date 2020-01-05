@@ -22,6 +22,7 @@ class TestProfileView(TestCase):
                 "pull_request": {
                     "title": "Finish beta",
                     "url": "https://github.com/jsmith/alpha/pulls/100",
+                    "author": "Mary Doe",
                 },
             },
             {
@@ -34,6 +35,7 @@ class TestProfileView(TestCase):
                 "pull_request": {
                     "title": "Add baz",
                     "url": "https://github.com/jsmith/foo/pulls/101",
+                    "author": "John Smith",
                 },
             },
             {
@@ -46,6 +48,7 @@ class TestProfileView(TestCase):
                 "pull_request": {
                     "title": "Add bar",
                     "url": "https://github.com/jsmith/foo/pulls/100",
+                    "author": "John Smith",
                 },
             },
         ],

@@ -1,8 +1,12 @@
 class BaseEvent:
-    def __init__(self, github_event):
+    def __init__(self, api, github_event):
+        self.api = api
         self.created_at = github_event.created_at
         self.repo = github_event.repo
         self.pull_request = github_event.payload["pull_request"]
+
+        # TODO: Memoize api.get_user()
+        self.pull_request_author = self.api.get_user(self.pull_request["user"]["login"])
 
     def unique_key(self):
         """
@@ -27,6 +31,8 @@ class BaseEvent:
             "pull_request": {
                 "title": self.pull_request["title"],
                 "url": self.pull_request["html_url"],
+                "author": self.pull_request_author.name
+                or self.pull_request_author.login,
             },
         }
 
@@ -44,12 +50,3 @@ class PullRequestReviewEvent(BaseEvent):
 
 
 EVENT_CLASSES = [PullRequestEvent, PullRequestReviewEvent]
-
-
-def event_from_github_event(github_event):
-    for event_class in EVENT_CLASSES:
-        if (
-            event_class.api_type == github_event.type
-            and event_class.action == github_event.payload["action"]
-        ):
-            return event_class(github_event)

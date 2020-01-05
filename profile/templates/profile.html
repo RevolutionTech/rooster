@@ -11,6 +11,7 @@
                 {% for event in subheader.list %}
                     <li>
                         <a href="{{ event.repo.url }}"><strong>{{ event.repo.name }}</strong></a>:
+                        [{{ event.pull_request.author }}]
                         <a href="{{ event.pull_request.url }}">{{ event.pull_request.title }}</a>
                     </li>
                 {% endfor %}
