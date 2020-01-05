@@ -14,16 +14,18 @@ class GithubAPI:
         self.github_named_user = self.api.get_user(github_authenticated_user.login)
 
     def get_events(self):
+        unique_keys = set()
         all_events = []
 
         for github_event in self.github_named_user.get_events():
             event = event_from_github_event(github_event)
             if event:
-                all_events.append(event.get_context_data())
+                unique_key = event.unique_key()
+                if unique_key not in unique_keys:
+                    unique_keys.add(unique_key)
+                    all_events.append(event)
 
         sorted_events = sorted(
-            all_events,
-            key=lambda e: (e["created_at"], e["subheader"].lower()),
-            reverse=True,
+            all_events, key=lambda e: (e.created_at, e.subheader.lower()), reverse=True
         )
-        return sorted_events
+        return [e.get_context_data() for e in sorted_events]
