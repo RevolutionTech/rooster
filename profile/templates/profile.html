@@ -3,7 +3,7 @@
 {% block content %}
     {% regroup events by created_at.date as events_by_day %}
     {% for date in events_by_day %}
-        <h2>{{ date.grouper }}</h2>
+        <h2>{{ date.grouper|date:"l N j, Y" }}</h2>
         {% regroup date.list by subheader as events_by_subheader %}
         {% for subheader in events_by_subheader %}
             <h3>{{ subheader.grouper }}</h3>
