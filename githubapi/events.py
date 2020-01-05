@@ -24,7 +24,10 @@ class BaseEvent:
             "created_at": self.created_at,
             "subheader": self.subheader,
             "repo": {"name": self.repo.name, "url": self.repo.html_url},
-            "pull_request": {"title": self.pull_request["title"]},
+            "pull_request": {
+                "title": self.pull_request["title"],
+                "url": self.pull_request["html_url"],
+            },
         }
 
 

@@ -31,7 +31,11 @@ class TestGetEvents(TestCase):
                         repo=mock_project,
                         payload={
                             "action": "created",
-                            "pull_request": {"id": 101, "title": other_pr_title},
+                            "pull_request": {
+                                "id": 101,
+                                "title": other_pr_title,
+                                "html_url": f"{repo_url}/pulls/101",
+                            },
                         },
                     ),
                     mock.Mock(type="IrrelevantEvent"),
@@ -41,7 +45,11 @@ class TestGetEvents(TestCase):
                         repo=mock_project,
                         payload={
                             "action": "opened",
-                            "pull_request": {"id": 100, "title": pr_title},
+                            "pull_request": {
+                                "id": 100,
+                                "title": pr_title,
+                                "html_url": f"{repo_url}/pulls/100",
+                            },
                         },
                     ),
                 ]
@@ -55,13 +63,16 @@ class TestGetEvents(TestCase):
                 "created_at": pr_created_dt + datetime.timedelta(hours=2),
                 "subheader": "PR Reviews",
                 "repo": {"name": project_name, "url": repo_url},
-                "pull_request": {"title": other_pr_title},
+                "pull_request": {
+                    "title": other_pr_title,
+                    "url": f"{repo_url}/pulls/101",
+                },
             },
             {
                 "created_at": pr_created_dt,
                 "subheader": "Pull Requests",
                 "repo": {"name": project_name, "url": repo_url},
-                "pull_request": {"title": pr_title},
+                "pull_request": {"title": pr_title, "url": f"{repo_url}/pulls/100"},
             },
         ]
 
@@ -89,7 +100,11 @@ class TestGetEvents(TestCase):
                         repo=mock_project,
                         payload={
                             "action": "created",
-                            "pull_request": {"id": 100, "title": pr_title},
+                            "pull_request": {
+                                "id": 100,
+                                "title": pr_title,
+                                "html_url": f"{repo_url}/pulls/100",
+                            },
                         },
                     ),
                     mock.Mock(
@@ -98,7 +113,11 @@ class TestGetEvents(TestCase):
                         repo=mock_project,
                         payload={
                             "action": "created",
-                            "pull_request": {"id": 100, "title": pr_title},
+                            "pull_request": {
+                                "id": 100,
+                                "title": pr_title,
+                                "html_url": f"{repo_url}/pulls/100",
+                            },
                         },
                     ),
                 ]
@@ -112,7 +131,7 @@ class TestGetEvents(TestCase):
                 "created_at": pr_created_dt,
                 "subheader": "PR Reviews",
                 "repo": {"name": project_name, "url": repo_url},
-                "pull_request": {"title": pr_title},
+                "pull_request": {"title": pr_title, "url": f"{repo_url}/pulls/100"},
             }
         ]
 

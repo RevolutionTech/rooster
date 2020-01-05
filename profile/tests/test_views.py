@@ -19,7 +19,10 @@ class TestProfileView(TestCase):
                     "name": "jsmith/alpha",
                     "url": "https://github.com/repos/jsmith/alpha",
                 },
-                "pull_request": {"title": "Finish beta"},
+                "pull_request": {
+                    "title": "Finish beta",
+                    "url": "https://github.com/jsmith/alpha/pulls/100",
+                },
             },
             {
                 "created_at": datetime.datetime(2019, 3, 1, tzinfo=pytz.utc),
@@ -28,7 +31,10 @@ class TestProfileView(TestCase):
                     "name": "jsmith/foo",
                     "url": "https://github.com/repos/jsmith/foo",
                 },
-                "pull_request": {"title": "Add baz"},
+                "pull_request": {
+                    "title": "Add baz",
+                    "url": "https://github.com/jsmith/foo/pulls/101",
+                },
             },
             {
                 "created_at": datetime.datetime(2019, 1, 1, tzinfo=pytz.utc),
@@ -37,7 +43,10 @@ class TestProfileView(TestCase):
                     "name": "jsmith/foo",
                     "url": "https://github.com/repos/jsmith/foo",
                 },
-                "pull_request": {"title": "Add bar"},
+                "pull_request": {
+                    "title": "Add bar",
+                    "url": "https://github.com/jsmith/foo/pulls/100",
+                },
             },
         ],
     )
