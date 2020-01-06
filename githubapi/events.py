@@ -5,9 +5,6 @@ class BaseEvent:
         self.repo = github_event.repo
         self.pull_request = github_event.payload["pull_request"]
 
-        # TODO: Memoize api.get_user()
-        self.pull_request_author = self.api.get_user(self.pull_request["user"]["login"])
-
     def unique_key(self):
         """
         Identifier used for uniqueness among other events.
@@ -24,15 +21,17 @@ class BaseEvent:
         )
 
     def get_context_data(self):
+        repo = self.api.get_repo(self.repo.id)
+        pull_request_author = self.api.get_user(self.pull_request["user"]["login"])
+
         return {
             "created_at": self.created_at,
             "subheader": self.subheader,
-            "repo": {"name": self.repo.name, "url": self.repo.html_url},
+            "repo": {"name": repo.name, "url": repo.html_url},
             "pull_request": {
                 "title": self.pull_request["title"],
                 "url": self.pull_request["html_url"],
-                "author": self.pull_request_author.name
-                or self.pull_request_author.login,
+                "author": pull_request_author.name or pull_request_author.login,
             },
         }
 
