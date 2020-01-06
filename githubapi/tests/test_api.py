@@ -39,7 +39,7 @@ class TestGetEvents(TestCase):
                         },
                     },
                 ),
-                mock.Mock(type="IrrelevantEvent"),
+                mock.Mock(created_at=pr_created_dt, type="IrrelevantEvent"),
                 mock.Mock(
                     created_at=pr_created_dt,
                     type="PullRequestEvent",
@@ -88,6 +88,7 @@ class TestGetEvents(TestCase):
         ]
 
         events = api.get_events()
+        self.assertEqual(len(events), len(expected_list))
         for actual, expected in zip(events, expected_list):
             self.assertEqual(actual, expected)
 
@@ -156,5 +157,96 @@ class TestGetEvents(TestCase):
         ]
 
         events = api.get_events()
+        self.assertEqual(len(events), len(expected_list))
+        for actual, expected in zip(events, expected_list):
+            self.assertEqual(actual, expected)
+
+    def test_max_5_days(self, mock_get_user, mock_get_repo):
+        pr_created_dt = datetime.datetime(2020, 1, 1, 0, 0, 0, tzinfo=pytz.utc)
+        project_name = "Project Name"
+
+        user = UserFactory()
+
+        repo_url = f"https://github.com/repos/{user.username}/project-name"
+        mock_project = mock.Mock(id=123, html_url=repo_url)
+        mock_project.name = project_name
+        mock_jsmith = mock.Mock(
+            login="jsmith",
+            get_events=lambda: [
+                mock.Mock(
+                    created_at=pr_created_dt,
+                    type="PullRequestEvent",
+                    repo=mock_project,
+                    payload={
+                        "action": "opened",
+                        "pull_request": {
+                            "id": 100,
+                            "title": "Today's PR",
+                            "html_url": f"{repo_url}/pulls/100",
+                            "user": {"login": "jsmith"},
+                        },
+                    },
+                ),
+                mock.Mock(
+                    created_at=pr_created_dt - datetime.timedelta(days=4),
+                    type="PullRequestEvent",
+                    repo=mock_project,
+                    payload={
+                        "action": "opened",
+                        "pull_request": {
+                            "id": 99,
+                            "title": "PR from 4 days ago",
+                            "html_url": f"{repo_url}/pulls/99",
+                            "user": {"login": "jsmith"},
+                        },
+                    },
+                ),
+                mock.Mock(
+                    created_at=pr_created_dt - datetime.timedelta(days=6),
+                    type="PullRequestEvent",
+                    repo=mock_project,
+                    payload={
+                        "action": "opened",
+                        "pull_request": {
+                            "id": 98,
+                            "title": "PR from 5 days ago",
+                            "html_url": f"{repo_url}/pulls/98",
+                            "user": {"login": "jsmith"},
+                        },
+                    },
+                ),
+            ],
+        )
+        mock_jsmith.name = "John Smith"
+        mock_get_user.side_effect = [mock_jsmith, mock_jsmith]
+        mock_get_repo.return_value = mock_project
+
+        api = GithubAPI(user)
+
+        expected_list = [
+            {
+                "created_at": pr_created_dt,
+                "subheader": "Pull Requests",
+                "repo": {"name": project_name, "url": repo_url},
+                "pull_request": {
+                    "title": "Today's PR",
+                    "url": f"{repo_url}/pulls/100",
+                    "author": "John Smith",
+                },
+            },
+            {
+                "created_at": pr_created_dt - datetime.timedelta(days=4),
+                "subheader": "Pull Requests",
+                "repo": {"name": project_name, "url": repo_url},
+                "pull_request": {
+                    "title": "PR from 4 days ago",
+                    "url": f"{repo_url}/pulls/99",
+                    "author": "John Smith",
+                },
+            },
+        ]
+
+        events = api.get_events()
+        self.assertEqual(len(events), len(expected_list))
         for actual, expected in zip(events, expected_list):
             self.assertEqual(actual, expected)
