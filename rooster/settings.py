@@ -26,6 +26,8 @@ class BaseConfig(Configuration):
         "django.contrib.sessions",
         "django.contrib.messages",
         "django.contrib.staticfiles",
+        "django_s3_sqlite",
+        "django_s3_storage",
         "social_django",
         "githubapi.apps.GithubApiConfig",
         "profile.apps.ProfileConfig",
@@ -94,4 +96,31 @@ class BaseConfig(Configuration):
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/3.0/howto/static-files/
     STATIC_URL = "/static/"
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+
+class ProdConfig(BaseConfig):
+    DOTENV = None
+
+    DEBUG = False
+    ALLOWED_HOSTS = ["standup.revolutiontech.ca"]
+
+    # Database
+    DATABASES = {
+        "default": {
+            "ENGINE": "django_s3_sqlite",
+            "NAME": "db.sqlite3",
+            "BUCKET": "rooster-sqlite3",
+        }
+    }
+
+    # Static files
+    STATICFILES_STORAGE = "django_s3_storage.storage.ManifestStaticS3Storage"
+    AWS_S3_BUCKET_NAME_STATIC = "rooster-standup"
+    AWS_S3_KEY_PREFIX_STATIC = "static"
+    AWS_S3_BUCKET_AUTH = False
+    AWS_S3_MAX_AGE_SECONDS = 60 * 60 * 24 * 365  # 1 year
+    STATIC_URL = f"https://{AWS_S3_BUCKET_NAME_STATIC}.s3.amazonaws.com/{AWS_S3_KEY_PREFIX_STATIC}/"
+    AWS_ACCESS_KEY_ID = values.SecretValue()
+    AWS_SECRET_ACCESS_KEY = values.SecretValue()
