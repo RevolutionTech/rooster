@@ -29,6 +29,7 @@ class BaseConfig(Configuration):
         "django_s3_sqlite",
         "django_s3_storage",
         "social_django",
+        "tz_detect",
         "githubapi.apps.GithubApiConfig",
         "profile.apps.ProfileConfig",
     ]
@@ -40,6 +41,7 @@ class BaseConfig(Configuration):
         "django.contrib.auth.middleware.AuthenticationMiddleware",
         "django.contrib.messages.middleware.MessageMiddleware",
         "django.middleware.clickjacking.XFrameOptionsMiddleware",
+        "tz_detect.middleware.TimezoneMiddleware",
     ]
     ROOT_URLCONF = "rooster.urls"
 

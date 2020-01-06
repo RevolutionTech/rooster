@@ -1,7 +1,11 @@
+import pytz
+from django.utils import timezone
+
+
 class BaseEvent:
     def __init__(self, api, github_event):
         self.api = api
-        self.created_at = github_event.created_at
+        self.created_at = timezone.localtime(pytz.utc.localize(github_event.created_at))
         self.repo = github_event.repo
         self.pull_request = github_event.payload["pull_request"]
 

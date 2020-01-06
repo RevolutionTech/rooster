@@ -12,7 +12,7 @@ from rooster.factories import UserFactory
 @mock.patch("githubapi.api.Github.get_user")
 class TestGetEvents(TestCase):
     def test_get_events(self, mock_get_user, mock_get_repo):
-        pr_created_dt = datetime.datetime(2020, 1, 1, tzinfo=pytz.utc)
+        pr_created_dt = datetime.datetime(2020, 1, 1)
         project_name = "Project Name"
         pr_title = "PR Title"
         other_pr_title = "Other PR"
@@ -66,7 +66,8 @@ class TestGetEvents(TestCase):
 
         expected_list = [
             {
-                "created_at": pr_created_dt + datetime.timedelta(hours=2),
+                "created_at": pytz.utc.localize(pr_created_dt)
+                + datetime.timedelta(hours=2),
                 "subheader": "PR Reviews",
                 "repo": {"name": project_name, "url": repo_url},
                 "pull_request": {
@@ -76,7 +77,7 @@ class TestGetEvents(TestCase):
                 },
             },
             {
-                "created_at": pr_created_dt,
+                "created_at": pytz.utc.localize(pr_created_dt),
                 "subheader": "Pull Requests",
                 "repo": {"name": project_name, "url": repo_url},
                 "pull_request": {
@@ -93,7 +94,7 @@ class TestGetEvents(TestCase):
             self.assertEqual(actual, expected)
 
     def test_no_duplicates(self, mock_get_user, mock_get_repo):
-        pr_created_dt = datetime.datetime(2020, 1, 1, 12, 0, 0, tzinfo=pytz.utc)
+        pr_created_dt = datetime.datetime(2020, 1, 1, 12, 0, 0)
         project_name = "Project Name"
         pr_title = "PR Title"
 
@@ -145,7 +146,7 @@ class TestGetEvents(TestCase):
 
         expected_list = [
             {
-                "created_at": pr_created_dt,
+                "created_at": pytz.utc.localize(pr_created_dt),
                 "subheader": "PR Reviews",
                 "repo": {"name": project_name, "url": repo_url},
                 "pull_request": {
@@ -162,7 +163,7 @@ class TestGetEvents(TestCase):
             self.assertEqual(actual, expected)
 
     def test_max_5_days(self, mock_get_user, mock_get_repo):
-        pr_created_dt = datetime.datetime(2020, 1, 1, 0, 0, 0, tzinfo=pytz.utc)
+        pr_created_dt = datetime.datetime(2020, 1, 1, 0, 0, 0)
         project_name = "Project Name"
 
         user = UserFactory()
@@ -225,7 +226,7 @@ class TestGetEvents(TestCase):
 
         expected_list = [
             {
-                "created_at": pr_created_dt,
+                "created_at": pytz.utc.localize(pr_created_dt),
                 "subheader": "Pull Requests",
                 "repo": {"name": project_name, "url": repo_url},
                 "pull_request": {
@@ -235,7 +236,8 @@ class TestGetEvents(TestCase):
                 },
             },
             {
-                "created_at": pr_created_dt - datetime.timedelta(days=4),
+                "created_at": pytz.utc.localize(pr_created_dt)
+                - datetime.timedelta(days=4),
                 "subheader": "Pull Requests",
                 "repo": {"name": project_name, "url": repo_url},
                 "pull_request": {

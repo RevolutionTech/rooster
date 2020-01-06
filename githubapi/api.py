@@ -1,6 +1,8 @@
 import datetime
 import functools
 
+import pytz
+from django.utils import timezone
 from github import Github
 from social_django.utils import load_strategy
 
@@ -32,7 +34,8 @@ class GithubAPI:
         """
         most_recent_event_date = None
         for github_event in self.github_named_user.get_events():
-            event_created_at_date = github_event.created_at.date()
+            event_created_at_utc = pytz.utc.localize(github_event.created_at)
+            event_created_at_date = timezone.localtime(event_created_at_utc).date()
             if most_recent_event_date is None:
                 most_recent_event_date = event_created_at_date
 

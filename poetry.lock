@@ -179,6 +179,19 @@ django = ">=1.11"
 
 [[package]]
 category = "main"
+description = "Automatic user timezone detection for django"
+name = "django-tz-detect"
+optional = false
+python-versions = "*"
+version = "0.3.0"
+
+[package.dependencies]
+django = ">=1.4.2"
+pytz = "*"
+six = "*"
+
+[[package]]
+category = "main"
 description = "Docutils -- Python Documentation Utilities"
 name = "docutils"
 optional = false
@@ -582,7 +595,7 @@ wheel = ">=0.30.0"
 wsgi-request-logger = "0.4.6"
 
 [metadata]
-content-hash = "5dfb1a113dd7e8443a55dc801f5be17c8f07f6d46f7229d55d5a5fdd95ee676f"
+content-hash = "d1a0a9cd60a7e0e992bfa4edef0d85ea6832114e85debbb45bb0969b77a04455"
 python-versions = "^3.6"
 
 [metadata.hashes]
@@ -603,6 +616,7 @@ django = ["a4ad4f6f9c6a4b7af7e2deec8d0cbff28501852e5010d6c2dc695d3d1fae7ca0", "f
 django-configurations = ["71d9acdff33aa034f0157b0b3d23629fe0cd499bf4d0b6d699b9ca0701d952e8", "e70433eeed10549d30bf5ca386c962505ff9f492893dd2483c52af536347adce"]
 django-s3-sqlite = ["3a6a694efa79dae0a56291271503d425a96df803c101e5bfe5d3e9b003ef1e20", "bc2f8264920f5de62be241ce26c2470b6d20b05a82fedf34f723433df59b96e5"]
 django-s3-storage = ["53c0d5a6b5064073246c120c67dbe011c16f27f77bd195573bccfd4c38756f83"]
+django-tz-detect = ["4c13811c21a7a233171392b5bb639a891b4241ca4a45b38ddbb19d348b5b3e07", "fb94506a52a4d2d46e1aca007d0c7101903c037203bf69a2bbc186f0721a777b"]
 docutils = ["6c4f696463b79f1fb8ba0c594b63840ebd41f059e92b31957c46b74a4599b6d0", "9e4d7ecfc600058e07ba661411a2b7de2fd0fafa17d1a7f7361cd47b1175c827", "a2aeea129088da402665e92e0b25b04b073c04b2dce4ab65caaa38b7ce2e1a99"]
 durationpy = ["5ef9416b527b50d722f34655becfb75e49228eb82f87b855ed1911b3314b5408"]
 factory-boy = ["728df59b372c9588b83153facf26d3d28947fc750e8e3c95cefa9bed0e6394ee", "faf48d608a1735f0d0a3c9cbf536d64f9132b547dae7ba452c4d99a79e84a370"]
