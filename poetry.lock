@@ -82,6 +82,17 @@ version = "2019.11.28"
 
 [[package]]
 category = "main"
+description = "Foreign Function Interface for Python calling C code."
+name = "cffi"
+optional = false
+python-versions = "*"
+version = "1.13.2"
+
+[package.dependencies]
+pycparser = "*"
+
+[[package]]
+category = "main"
 description = "Convert AWS CloudFormation templates between JSON and YAML formats"
 name = "cfn-flip"
 optional = false
@@ -119,8 +130,19 @@ version = "5.0.2"
 
 [[package]]
 category = "main"
+description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
+name = "cryptography"
+optional = false
+python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*"
+version = "2.8"
+
+[package.dependencies]
+cffi = ">=1.8,<1.11.3 || >1.11.3"
+six = ">=1.4.1"
+
+[[package]]
+category = "main"
 description = "XML bomb protection for Python stdlib modules"
-marker = "python_version >= \"3.0\""
 name = "defusedxml"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
@@ -151,11 +173,35 @@ sqlparse = "*"
 
 [[package]]
 category = "main"
+description = "A helper class for handling configuration defaults of packaged apps gracefully."
+name = "django-appconf"
+optional = false
+python-versions = "*"
+version = "1.0.3"
+
+[package.dependencies]
+django = "*"
+six = "*"
+
+[[package]]
+category = "main"
 description = "A helper for organizing Django settings."
 name = "django-configurations"
 optional = false
 python-versions = "*"
 version = "2.1"
+
+[[package]]
+category = "main"
+description = "Easily encrypt data in Django"
+name = "django-cryptography"
+optional = false
+python-versions = "*"
+version = "0.3"
+
+[package.dependencies]
+cryptography = "*"
+django-appconf = "*"
 
 [[package]]
 category = "main"
@@ -259,6 +305,24 @@ version = "2.8"
 
 [[package]]
 category = "main"
+description = "Python library for interacting with JIRA via REST APIs."
+name = "jira"
+optional = false
+python-versions = "*"
+version = "2.0.0"
+
+[package.dependencies]
+defusedxml = "*"
+oauthlib = ">=1.0.0"
+pbr = ">=3.0.0"
+requests = ">=2.10.0"
+requests-oauthlib = ">=0.6.1"
+requests-toolbelt = "*"
+setuptools = ">=20.10.1"
+six = ">=1.10.0"
+
+[[package]]
+category = "main"
 description = "JSON Matching Expressions"
 name = "jmespath"
 optional = false
@@ -305,11 +369,27 @@ version = "0.7.0"
 
 [[package]]
 category = "main"
+description = "Python Build Reasonableness"
+name = "pbr"
+optional = false
+python-versions = "*"
+version = "5.4.4"
+
+[[package]]
+category = "main"
 description = "Make boto3 calls that look real but have no effect"
 name = "placebo"
 optional = false
 python-versions = "*"
 version = "0.9.0"
+
+[[package]]
+category = "main"
+description = "C parser in Python"
+name = "pycparser"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "2.19"
 
 [[package]]
 category = "main"
@@ -427,6 +507,17 @@ version = "1.3.0"
 [package.dependencies]
 oauthlib = ">=3.0.0"
 requests = ">=2.0.0"
+
+[[package]]
+category = "main"
+description = "A utility belt for advanced users of python-requests"
+name = "requests-toolbelt"
+optional = false
+python-versions = "*"
+version = "0.9.1"
+
+[package.dependencies]
+requests = ">=2.0.1,<3.0.0"
 
 [[package]]
 category = "main"
@@ -622,7 +713,7 @@ wheel = ">=0.30.0"
 wsgi-request-logger = "0.4.6"
 
 [metadata]
-content-hash = "5da9bee0c56c0f428e26b735d33f50e14c85232c88ad8f2e0eaa1ab45d17b46e"
+content-hash = "65b219f64cab152ec5da86a4f702c43c9ba553065eb8c4b534c487d1d77be67b"
 python-versions = "^3.6"
 
 [metadata.hashes]
@@ -633,14 +724,18 @@ black = ["1b30e59be925fafc1ee4565e5e08abef6b03fe455102883820fe5ee2e4734e0b", "c2
 boto3 = ["c532564961b4c589a0fcf64b892ca215ccef898155faf4c3ba77e6338bb3a8ac", "f2cf6fd3d1ee4aba511ba323b3d13a4331bbe4ff805eecca7d7a5aecb8482290"]
 botocore = ["1f42f1cc304ec5793c5031a81dc30dfbdf21dcf2d53c11d6c2644236835c1bb5", "79f22d99bf990ad6be760602713d537f0658d572bc04bc007c60b2c8c55d4286"]
 certifi = ["017c25db2a153ce562900032d5bc68e9f191e44e9a0f762f373977de9df1fbb3", "25b64c7da4cd7479594d035c08c2d809eb4aab3a26e5a990ea98cc450c320f1f"]
+cffi = ["0b49274afc941c626b605fb59b59c3485c17dc776dc3cc7cc14aca74cc19cc42", "0e3ea92942cb1168e38c05c1d56b0527ce31f1a370f6117f1d490b8dcd6b3a04", "135f69aecbf4517d5b3d6429207b2dff49c876be724ac0c8bf8e1ea99df3d7e5", "19db0cdd6e516f13329cba4903368bff9bb5a9331d3410b1b448daaadc495e54", "2781e9ad0e9d47173c0093321bb5435a9dfae0ed6a762aabafa13108f5f7b2ba", "291f7c42e21d72144bb1c1b2e825ec60f46d0a7468f5346841860454c7aa8f57", "2c5e309ec482556397cb21ede0350c5e82f0eb2621de04b2633588d118da4396", "2e9c80a8c3344a92cb04661115898a9129c074f7ab82011ef4b612f645939f12", "32a262e2b90ffcfdd97c7a5e24a6012a43c61f1f5a57789ad80af1d26c6acd97", "3c9fff570f13480b201e9ab69453108f6d98244a7f495e91b6c654a47486ba43", "415bdc7ca8c1c634a6d7163d43fb0ea885a07e9618a64bda407e04b04333b7db", "42194f54c11abc8583417a7cf4eaff544ce0de8187abaf5d29029c91b1725ad3", "4424e42199e86b21fc4db83bd76909a6fc2a2aefb352cb5414833c030f6ed71b", "4a43c91840bda5f55249413037b7a9b79c90b1184ed504883b72c4df70778579", "599a1e8ff057ac530c9ad1778293c665cb81a791421f46922d80a86473c13346", "5c4fae4e9cdd18c82ba3a134be256e98dc0596af1e7285a3d2602c97dcfa5159", "5ecfa867dea6fabe2a58f03ac9186ea64da1386af2159196da51c4904e11d652", "62f2578358d3a92e4ab2d830cd1c2049c9c0d0e6d3c58322993cc341bdeac22e", "6471a82d5abea994e38d2c2abc77164b4f7fbaaf80261cb98394d5793f11b12a", "6d4f18483d040e18546108eb13b1dfa1000a089bcf8529e30346116ea6240506", "71a608532ab3bd26223c8d841dde43f3516aa5d2bf37b50ac410bb5e99053e8f", "74a1d8c85fb6ff0b30fbfa8ad0ac23cd601a138f7509dc617ebc65ef305bb98d", "7b93a885bb13073afb0aa73ad82059a4c41f4b7d8eb8368980448b52d4c7dc2c", "7d4751da932caaec419d514eaa4215eaf14b612cff66398dd51129ac22680b20", "7f627141a26b551bdebbc4855c1157feeef18241b4b8366ed22a5c7d672ef858", "8169cf44dd8f9071b2b9248c35fc35e8677451c52f795daa2bb4643f32a540bc", "aa00d66c0fab27373ae44ae26a66a9e43ff2a678bf63a9c7c1a9a4d61172827a", "ccb032fda0873254380aa2bfad2582aedc2959186cce61e3a17abc1a55ff89c3", "d754f39e0d1603b5b24a7f8484b22d2904fa551fe865fd0d4c3332f078d20d4e", "d75c461e20e29afc0aee7172a0950157c704ff0dd51613506bd7d82b718e7410", "dcd65317dd15bc0451f3e01c80da2216a31916bdcffd6221ca1202d96584aa25", "e570d3ab32e2c2861c4ebe6ffcad6a8abf9347432a37608fe1fbd157b3f0036b", "fd43a88e045cf992ed09fa724b5315b790525f2676883a6ea64e3263bae6549d"]
 cfn-flip = ["40fc5e279fd99ebebec164b2b9e6f7b76f22e0ae42b3b48e45f70010bd082619", "8ddd026cef53cd11a4a27e6dc239417a2bbf86587ba2e59fd6bf615ad8dec516"]
 chardet = ["84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae", "fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"]
 click = ["2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13", "5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"]
 coverage = ["189aac76d6e0d7af15572c51892e7326ee451c076c5a50a9d266406cd6c49708", "1bf7ba2af1d373a1750888724f84cffdfc697738f29a353c98195f98fc011509", "1f4ee8e2e4243971618bc16fcc4478317405205f135e95226c2496e2a3b8dbbf", "225e79a5d485bc1642cb7ba02281419c633c216cdc6b26c26494ba959f09e69f", "23688ff75adfa8bfa2a67254d889f9bdf9302c27241d746e17547c42c732d3f4", "28f7f73b34a05e23758e860a89a7f649b85c6749e252eff60ebb05532d180e86", "2d0cb9b1fe6ad0d915d45ad3d87f03a38e979093a98597e755930db1f897afae", "47874b4711c5aeb295c31b228a758ce3d096be83dc37bd56da48ed99efb8813b", "511ec0c00840e12fb4e852e4db58fa6a01ca4da72f36a9766fae344c3d502033", "53e7438fef0c97bc248f88ba1edd10268cd94d5609970aaf87abbe493691af87", "569f9ee3025682afda6e9b0f5bb14897c0db03f1a1dc088b083dd36e743f92bb", "593853aa1ac6dcc6405324d877544c596c9d948ef20d2e9512a0f5d2d3202356", "5b0a07158360d22492f9abd02a0f2ee7981b33f0646bf796598b7673f6bbab14", "7ca3db38a61f3655a2613ee2c190d63639215a7a736d3c64cc7bbdb002ce6310", "7d1cc7acc9ce55179616cf72154f9e648136ea55987edf84addbcd9886ffeba2", "88b51153657612aea68fa684a5b88037597925260392b7bb4509d4f9b0bdd889", "955ec084f549128fa2702f0b2dc696392001d986b71acd8fd47424f28289a9c3", "b251c7092cbb6d789d62dc9c9e7c4fb448c9138b51285c36aeb72462cad3600e", "bd82b684bb498c60ef47bb1541a50e6d006dde8579934dcbdbc61d67d1ea70d9", "bfe102659e2ec13b86c7f3b1db6c9a4e7beea4255058d006351339e6b342d5d2", "c1e4e39e43057396a5e9d069bfbb6ffeee892e40c5d2effbd8cd71f34ee66c4d", "cb2b74c123f65e8166f7e1265829a6c8ed755c3cd16d7f50e75a83456a5f3fd7", "cca38ded59105f7705ef6ffe1e960b8db6c7d8279c1e71654a4775ab4454ca15", "cf908840896f7aa62d0ec693beb53264b154f972eb8226fb864ac38975590c4f", "d095a7b473f8a95f7efe821f92058c8a2ecfb18f8db6677ae3819e15dc11aaae", "d22b4297e7e4225ccf01f1aa55e7a96412ea0796b532dd614c3fcbafa341128e", "d4a2b578a7a70e0c71f662705262f87a456f1e6c1e40ada7ea699abaf070a76d", "ddeb42a3d5419434742bf4cc71c9eaa22df3b76808e23a82bd0b0bd360f1a9f1", "e65a5aa1670db6263f19fdc03daee1d7dbbadb5cb67fd0a1f16033659db13c1d", "eaad65bd20955131bcdb3967a4dea66b4e4d4ca488efed7c00d91ee0173387e8", "f45fba420b94165c17896861bb0e8b27fb7abdcedfeb154895d8553df90b7b00"]
+cryptography = ["02079a6addc7b5140ba0825f542c0869ff4df9a69c360e339ecead5baefa843c", "1df22371fbf2004c6f64e927668734070a8953362cd8370ddd336774d6743595", "369d2346db5934345787451504853ad9d342d7f721ae82d098083e1f49a582ad", "3cda1f0ed8747339bbdf71b9f38ca74c7b592f24f65cdb3ab3765e4b02871651", "44ff04138935882fef7c686878e1c8fd80a723161ad6a98da31e14b7553170c2", "4b1030728872c59687badcca1e225a9103440e467c17d6d1730ab3d2d64bfeff", "58363dbd966afb4f89b3b11dfb8ff200058fbc3b947507675c19ceb46104b48d", "6ec280fb24d27e3d97aa731e16207d58bd8ae94ef6eab97249a2afe4ba643d42", "7270a6c29199adc1297776937a05b59720e8a782531f1f122f2eb8467f9aab4d", "73fd30c57fa2d0a1d7a49c561c40c2f79c7d6c374cc7750e9ac7c99176f6428e", "7f09806ed4fbea8f51585231ba742b58cbcfbfe823ea197d8c89a5e433c7e912", "90df0cc93e1f8d2fba8365fb59a858f51a11a394d64dbf3ef844f783844cc793", "971221ed40f058f5662a604bd1ae6e4521d84e6cad0b7b170564cc34169c8f13", "a518c153a2b5ed6b8cc03f7ae79d5ffad7315ad4569b2d5333a13c38d64bd8d7", "b0de590a8b0979649ebeef8bb9f54394d3a41f66c5584fff4220901739b6b2f0", "b43f53f29816ba1db8525f006fa6f49292e9b029554b3eb56a189a70f2a40879", "d31402aad60ed889c7e57934a03477b572a03af7794fa8fb1780f21ea8f6551f", "de96157ec73458a7f14e3d26f17f8128c959084931e8997b9e655a39c8fde9f9", "df6b4dca2e11865e6cfbfb708e800efb18370f5a46fd601d3755bc7f85b3a8a2", "ecadccc7ba52193963c0475ac9f6fa28ac01e01349a2ca48509667ef41ffd2cf", "fb81c17e0ebe3358486cd8cc3ad78adbae58af12fc2bf2bc0bb84e8090fa5ce8"]
 defusedxml = ["6687150770438374ab581bb7a1b327a847dd9c5749e396102de3fad4e8a3ef93", "f684034d135af4c6cbb949b8a4d2ed61634515257a67299e5f940fbaa34377f5"]
 deprecated = ["408038ab5fdeca67554e8f6742d1521cd3cd0ee0ff9d47f29318a4f4da31c308", "8b6a5aa50e482d8244a62e5582b96c372e87e3a28e8b49c316e46b95c76a611d"]
 django = ["a4ad4f6f9c6a4b7af7e2deec8d0cbff28501852e5010d6c2dc695d3d1fae7ca0", "fa98ec9cc9bf5d72a08ebf3654a9452e761fbb8566e3f80de199cbc15477e891"]
+django-appconf = ["35f13ca4d567f132b960e2cd4c832c2d03cb6543452d34e29b7ba10371ba80e3", "c98a7af40062e996b921f5962a1c4f3f0c979fa7885f7be4710cceb90ebe13a6"]
 django-configurations = ["71d9acdff33aa034f0157b0b3d23629fe0cd499bf4d0b6d699b9ca0701d952e8", "e70433eeed10549d30bf5ca386c962505ff9f492893dd2483c52af536347adce"]
+django-cryptography = ["186b9313b2d481ae3d421e7393f6f57c0866934e6fe8bed1a6bcdeccf80be283", "b176a457dd88f1e5752709230a16aeefbd8357cefe9d3fdd647ab62c7c4b85ec"]
 django-s3-sqlite = ["3a6a694efa79dae0a56291271503d425a96df803c101e5bfe5d3e9b003ef1e20", "bc2f8264920f5de62be241ce26c2470b6d20b05a82fedf34f723433df59b96e5"]
 django-s3-storage = ["53c0d5a6b5064073246c120c67dbe011c16f27f77bd195573bccfd4c38756f83"]
 django-tz-detect = ["4c13811c21a7a233171392b5bb639a891b4241ca4a45b38ddbb19d348b5b3e07", "fb94506a52a4d2d46e1aca007d0c7101903c037203bf69a2bbc186f0721a777b"]
@@ -651,12 +746,15 @@ faker = ["48c03580720e0b46538d528b1296e4e5b24a809dcaf33a7dddec719489a9edb8", "63
 future = ["e39ced1ab767b5936646cedba8bcce582398233d6a627067d4c6a454c90cfedb"]
 hjson = ["1d1727faa6aaef2973921877125a3ab7c5f6d34b93233179d01770f41fab51f9"]
 idna = ["c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407", "ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"]
+jira = ["9adeead4d5f5a6aff74c630787f8bd2d4b0e154f3a3036641298064e91b2d25d", "e2a94adff98e45b29ded030adc76103eab34fa7d4d57303f211f572bedba0e93"]
 jmespath = ["6a81d4c9aa62caf061cb517b4d9ad1dd300374cd4706997aff9cd6aedd61fc64", "f11b4461f425740a1d908e9a3f7365c3d2e569f6ca68a2ff8bc5bcd9676edd63"]
 kappa = ["4b5b372872f25d619e427e04282551048dc975a107385b076b3ffc6406a15833", "4d6b7b3accce4a0aaaac92b36237a6304f0f2fffbbe3caea3f7c9f52d12c9989"]
 lambda-packages = ["b5e3b81ecef5f7c1b0903b5c40813536ba2343a33868a567e4e4ff1e26243406"]
 oauthlib = ["bee41cc35fcca6e988463cacc3bcb8a96224f470ca547e697b604cc697b2f889", "df884cd6cbe20e32633f1db1072e9356f53638e4361bef4e8b03c9127c9328ea"]
 pathspec = ["163b0632d4e31cef212976cf57b43d9fd6b0bac6e67c26015d611a647d5e7424", "562aa70af2e0d434367d9790ad37aed893de47f1693e4201fd1d3dca15d19b96"]
+pbr = ["139d2625547dbfa5fb0b81daebb39601c478c21956dc57e2e07b74450a8c506b", "61aa52a0f18b71c5cc58232d2cf8f8d09cd67fcad60b742a60124cb8d6951488"]
 placebo = ["03157f8527bbc2965b71b88f4a139ef8038618b346787f20d63e3c5da541b047"]
+pycparser = ["a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"]
 pygithub = ["980ac6288f3b38332ae988b7d7374e2b71e21d4e3332413c079fd92dda040126"]
 pyjwt = ["5c6eca3c2940464d106b99ba83b00c6add741c9becaec087fb7ccdefea71350e", "8d59a976fb773f3e6a39c85636357c4f0e242707394cadadd9814f5cbaa20e96"]
 python-dateutil = ["891c38b2a02f5bb1be3e4793866c8df49c7d19baabf9c1bad62547e0b4866aca", "95511bae634d69bc7329ba55e646499a842bc4ec342ad54a8cdb65645a0aad3c"]
@@ -668,6 +766,7 @@ pyyaml = ["0e7f69397d53155e55d10ff68fdfb2cf630a35e6daf65cf0bdeaf04f127c09dc", "2
 regex = ["032fdcc03406e1a6485ec09b826eac78732943840c4b29e503b789716f051d8d", "0e6cf1e747f383f52a0964452658c04300a9a01e8a89c55ea22813931b580aa8", "106e25a841921d8259dcef2a42786caae35bc750fb996f830065b3dfaa67b77e", "1768cf42a78a11dae63152685e7a1d90af7a8d71d2d4f6d2387edea53a9e0588", "27d1bd20d334f50b7ef078eba0f0756a640fd25f5f1708d3b5bed18a5d6bced9", "29b20f66f2e044aafba86ecf10a84e611b4667643c42baa004247f5dfef4f90b", "4850c78b53acf664a6578bba0e9ebeaf2807bb476c14ec7e0f936f2015133cae", "57eacd38a5ec40ed7b19a968a9d01c0d977bda55664210be713e750dd7b33540", "724eb24b92fc5fdc1501a1b4df44a68b9c1dda171c8ef8736799e903fb100f63", "77ae8d926f38700432807ba293d768ba9e7652df0cbe76df2843b12f80f68885", "78b3712ec529b2a71731fbb10b907b54d9c53a17ca589b42a578bc1e9a2c82ea", "7bbbdbada3078dc360d4692a9b28479f569db7fc7f304b668787afc9feb38ec8", "8d9ef7f6c403e35e73b7fc3cde9f6decdc43b1cb2ff8d058c53b9084bfcb553e", "a83049eb717ae828ced9cf607845929efcb086a001fc8af93ff15c50012a5716", "adc35d38952e688535980ae2109cad3a109520033642e759f987cf47fe278aa1", "c29a77ad4463f71a506515d9ec3a899ed026b4b015bf43245c919ff36275444b", "cfd31b3300fefa5eecb2fe596c6dee1b91b3a05ece9d5cfd2631afebf6c6fadd", "d3ee0b035816e0520fac928de31b6572106f0d75597f6fa3206969a02baba06f", "d508875793efdf6bab3d47850df8f40d4040ae9928d9d80864c1768d6aeaf8e3", "ef0b828a7e22e58e06a1cceddba7b4665c6af8afeb22a0d8083001330572c147", "faad39fdbe2c2ccda9846cd21581063086330efafa47d87afea4073a08128656"]
 requests = ["11e007a8a2aa0323f5a921e9e6a2d7e4e67d9877e85773fba9ba6419025cbeb4", "9cf5292fcd0f598c671cfc1e0d7d1a7f13bb8085e9a590f48c010551dc6c4b31"]
 requests-oauthlib = ["7f71572defaecd16372f9006f33c2ec8c077c3cfa6f5911a9a90202beb513f3d", "b4261601a71fd721a8bd6d7aa1cc1d6a8a93b4a9f5e96626f8e4d91e8beeaa6a", "fa6c47b933f01060936d87ae9327fead68768b69c6c9ea2109c48be30f2d4dbc"]
+requests-toolbelt = ["380606e1d10dc85c3bd47bf5a6095f815ec007be7a8b69c878507068df059e6f", "968089d4584ad4ad7c171454f0a5c6dac23971e9472521ea3b6d49d610aa6fc0"]
 s3transfer = ["6efc926738a3cd576c2a79725fed9afde92378aa5c6a957e3af010cb019fac9d", "b780f2411b824cb541dbcd2c713d0cb61c7d1bcadae204cdddda2b35cef493ba"]
 six = ["1f1b7d42e254082a9db6279deae68afb421ceba6158efa6131de7b3003ee93fd", "30f610279e8b2578cab6db20741130331735c781b56053c59c4076da27f06b66"]
 social-auth-app-django = ["6d0dd18c2d9e71ca545097d57b44d26f59e624a12833078e8e52f91baf849778", "9237e3d7b6f6f59494c3b02e0cce6efc69c9d33ad9d1a064e3b2318bcbe89ae3", "f151396e5b16e2eee12cd2e211004257826ece24fc4ae97a147df386c1cd7082"]

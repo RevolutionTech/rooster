@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+    {% if jira_valid_credentials %}
+        <h2>Tickets In Progress</h2>
+        <ul>
+            {% for ticket in tickets %}
+                <li>
+                    <a href="{{ ticket.url }}">{{ ticket.key }}</a>:
+                    {{ ticket.summary }}
+                </li>
+            {% empty %}
+                <li>No tickets in progress</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     {% regroup events by created_at.date as events_by_day %}
     {% for date in events_by_day %}
         <h2>{{ date.grouper|date:"l N j, Y" }}</h2>

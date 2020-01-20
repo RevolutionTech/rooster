@@ -31,6 +31,7 @@ class BaseConfig(Configuration):
         "social_django",
         "tz_detect",
         "githubapi.apps.GithubApiConfig",
+        "jiraapi.apps.JiraApiConfig",
         "profile.apps.ProfileConfig",
     ]
     MIDDLEWARE = [

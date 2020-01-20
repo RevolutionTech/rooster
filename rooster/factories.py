@@ -17,6 +17,9 @@ class UserFactory(factory.DjangoModelFactory):
     social_auth = factory.RelatedFactory(
         "rooster.factories.UserSocialAuthFactory", "user"
     )
+    settings = factory.RelatedFactory(
+        "profile.tests.factories.UserSettingsFactory", "user"
+    )
 
 
 class UserSocialAuthFactory(factory.DjangoModelFactory):
