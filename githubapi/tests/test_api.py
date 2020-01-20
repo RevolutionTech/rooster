@@ -66,6 +66,16 @@ class TestGetEvents(TestCase):
 
         expected_list = [
             {
+                "created_at": pytz.utc.localize(pr_created_dt),
+                "subheader": "Pull Requests",
+                "repo": {"name": project_name, "url": repo_url},
+                "pull_request": {
+                    "title": pr_title,
+                    "url": f"{repo_url}/pulls/100",
+                    "author": "John Smith",
+                },
+            },
+            {
                 "created_at": pytz.utc.localize(pr_created_dt)
                 + datetime.timedelta(hours=2),
                 "subheader": "PR Reviews",
@@ -74,16 +84,6 @@ class TestGetEvents(TestCase):
                     "title": other_pr_title,
                     "url": f"{repo_url}/pulls/101",
                     "author": "Mary Doe",
-                },
-            },
-            {
-                "created_at": pytz.utc.localize(pr_created_dt),
-                "subheader": "Pull Requests",
-                "repo": {"name": project_name, "url": repo_url},
-                "pull_request": {
-                    "title": pr_title,
-                    "url": f"{repo_url}/pulls/100",
-                    "author": "John Smith",
                 },
             },
         ]

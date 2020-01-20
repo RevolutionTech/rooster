@@ -67,6 +67,12 @@ class GithubAPI:
     def get_events(self):
         all_events = self.get_unique_events()
         sorted_events = sorted(
-            all_events, key=lambda e: (e.created_at, e.subheader.lower()), reverse=True
+            all_events,
+            key=lambda e: (
+                e.created_at.date(),
+                e.subheader.lower(),
+                e.created_at.time(),
+            ),
+            reverse=True,
         )
         return [e.get_context_data() for e in sorted_events]
