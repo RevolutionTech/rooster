@@ -7,8 +7,8 @@ from jiraapi.api import JiraAPI
 from profile.models import UserSettings
 
 
-class ProfileView(LoginRequiredMixin, TemplateView):
-    template_name = "profile.html"
+class DashboardView(LoginRequiredMixin, TemplateView):
+    template_name = "dashboard.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,7 +31,7 @@ class SettingsView(LoginRequiredMixin, UpdateView):
     template_name = "settings.html"
     model = UserSettings
     fields = ["jira_server_url", "jira_email", "jira_api_key"]
-    success_url = reverse_lazy("settings")
+    success_url = reverse_lazy("dashboard")
 
     def get_object(self):
         user_settings, _ = UserSettings.objects.get_or_create(user=self.request.user)

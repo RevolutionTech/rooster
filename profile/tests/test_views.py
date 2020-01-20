@@ -8,7 +8,7 @@ from django.test import TestCase
 from rooster.factories import UserFactory
 
 
-class TestProfileView(TestCase):
+class TestDashboardView(TestCase):
     @mock.patch(
         "profile.views.GithubAPI.get_events",
         return_value=[
@@ -56,7 +56,7 @@ class TestProfileView(TestCase):
     @mock.patch("profile.views.GithubAPI.__init__", return_value=None)
     @mock.patch("profile.views.JiraAPI.get_in_progress_tickets")
     @mock.patch("jiraapi.api.JIRA.__init__", return_value=None)
-    def test_get_profile(
+    def test_get_dashboard(
         self, mock_jira_init, mock_get_tickets, mock_githubapi_init, mock_get_events
     ):
         user = UserFactory()
