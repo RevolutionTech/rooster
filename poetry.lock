@@ -189,7 +189,10 @@ description = "A helper for organizing Django settings."
 name = "django-configurations"
 optional = false
 python-versions = "*"
-version = "2.1"
+version = "2.2"
+
+[package.dependencies]
+six = "*"
 
 [[package]]
 category = "main"
@@ -713,7 +716,7 @@ wheel = ">=0.30.0"
 wsgi-request-logger = "0.4.6"
 
 [metadata]
-content-hash = "65b219f64cab152ec5da86a4f702c43c9ba553065eb8c4b534c487d1d77be67b"
+content-hash = "21dc85b75419111a4827239567b1020a0d428c356eb052bd210094b73ce63645"
 python-versions = "^3.6"
 
 [metadata.hashes]
@@ -734,7 +737,7 @@ defusedxml = ["6687150770438374ab581bb7a1b327a847dd9c5749e396102de3fad4e8a3ef93"
 deprecated = ["408038ab5fdeca67554e8f6742d1521cd3cd0ee0ff9d47f29318a4f4da31c308", "8b6a5aa50e482d8244a62e5582b96c372e87e3a28e8b49c316e46b95c76a611d"]
 django = ["a4ad4f6f9c6a4b7af7e2deec8d0cbff28501852e5010d6c2dc695d3d1fae7ca0", "fa98ec9cc9bf5d72a08ebf3654a9452e761fbb8566e3f80de199cbc15477e891"]
 django-appconf = ["35f13ca4d567f132b960e2cd4c832c2d03cb6543452d34e29b7ba10371ba80e3", "c98a7af40062e996b921f5962a1c4f3f0c979fa7885f7be4710cceb90ebe13a6"]
-django-configurations = ["71d9acdff33aa034f0157b0b3d23629fe0cd499bf4d0b6d699b9ca0701d952e8", "e70433eeed10549d30bf5ca386c962505ff9f492893dd2483c52af536347adce"]
+django-configurations = ["0b93cb7042739e2d69cfc6fb81676bbd3cbb63ea19b02e8b681f4cad3a8aaf1b", "9e3bcea1355ac50a4c9f854f751d214cb17e5f8adf18405a4488d0a1e8945915"]
 django-cryptography = ["186b9313b2d481ae3d421e7393f6f57c0866934e6fe8bed1a6bcdeccf80be283", "b176a457dd88f1e5752709230a16aeefbd8357cefe9d3fdd647ab62c7c4b85ec"]
 django-s3-sqlite = ["3a6a694efa79dae0a56291271503d425a96df803c101e5bfe5d3e9b003ef1e20", "bc2f8264920f5de62be241ce26c2470b6d20b05a82fedf34f723433df59b96e5"]
 django-s3-storage = ["53c0d5a6b5064073246c120c67dbe011c16f27f77bd195573bccfd4c38756f83"]
