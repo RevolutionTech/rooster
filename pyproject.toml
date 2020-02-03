@@ -16,7 +16,7 @@ django-s3-sqlite = "^0.0.2"
 django-s3-storage = "^0.13.0"
 django-tz-detect = "^0.3.0"
 jira = "^2.0"
-django-cryptography = "^0.3.0"
+django-cryptography = "^0.4"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^19.10b0", allows-prereleases = true}

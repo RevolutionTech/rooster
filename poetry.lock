@@ -200,7 +200,7 @@ description = "Easily encrypt data in Django"
 name = "django-cryptography"
 optional = false
 python-versions = "*"
-version = "0.3"
+version = "0.4"
 
 [package.dependencies]
 cryptography = "*"
@@ -716,7 +716,7 @@ wheel = ">=0.30.0"
 wsgi-request-logger = "0.4.6"
 
 [metadata]
-content-hash = "21dc85b75419111a4827239567b1020a0d428c356eb052bd210094b73ce63645"
+content-hash = "cf89f42b87317d83b922554322c8664cff230c2a837423872925cb5ebbea701e"
 python-versions = "^3.6"
 
 [metadata.hashes]
@@ -738,7 +738,7 @@ deprecated = ["408038ab5fdeca67554e8f6742d1521cd3cd0ee0ff9d47f29318a4f4da31c308"
 django = ["a4ad4f6f9c6a4b7af7e2deec8d0cbff28501852e5010d6c2dc695d3d1fae7ca0", "fa98ec9cc9bf5d72a08ebf3654a9452e761fbb8566e3f80de199cbc15477e891"]
 django-appconf = ["35f13ca4d567f132b960e2cd4c832c2d03cb6543452d34e29b7ba10371ba80e3", "c98a7af40062e996b921f5962a1c4f3f0c979fa7885f7be4710cceb90ebe13a6"]
 django-configurations = ["0b93cb7042739e2d69cfc6fb81676bbd3cbb63ea19b02e8b681f4cad3a8aaf1b", "9e3bcea1355ac50a4c9f854f751d214cb17e5f8adf18405a4488d0a1e8945915"]
-django-cryptography = ["186b9313b2d481ae3d421e7393f6f57c0866934e6fe8bed1a6bcdeccf80be283", "b176a457dd88f1e5752709230a16aeefbd8357cefe9d3fdd647ab62c7c4b85ec"]
+django-cryptography = ["8736a51a88b7eb25e312ced8f510a1471fbcbff2a49da334a0af15a43fcb776c", "9e6b0be85e18838e20dfb27a2b68fe5cefbfc689c9416b2ca54f6c0610dcab91"]
 django-s3-sqlite = ["3a6a694efa79dae0a56291271503d425a96df803c101e5bfe5d3e9b003ef1e20", "bc2f8264920f5de62be241ce26c2470b6d20b05a82fedf34f723433df59b96e5"]
 django-s3-storage = ["53c0d5a6b5064073246c120c67dbe011c16f27f77bd195573bccfd4c38756f83"]
 django-tz-detect = ["4c13811c21a7a233171392b5bb639a891b4241ca4a45b38ddbb19d348b5b3e07", "fb94506a52a4d2d46e1aca007d0c7101903c037203bf69a2bbc186f0721a777b"]
