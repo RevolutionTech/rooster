@@ -392,14 +392,6 @@ placebo = ">=0.8.1"
 
 [[package]]
 category = "main"
-description = "AWS Lambda Packages"
-name = "lambda-packages"
-optional = false
-python-versions = "*"
-version = "0.20.0"
-
-[[package]]
-category = "main"
 description = "A generic, spec-compliant, thorough implementation of the OAuth request-signing logic"
 name = "oauthlib"
 optional = false
@@ -426,6 +418,18 @@ name = "pbr"
 optional = false
 python-versions = "*"
 version = "5.4.4"
+
+[[package]]
+category = "main"
+description = "pip-tools keeps your pinned dependencies fresh."
+name = "pip-tools"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "4.5.1"
+
+[package.dependencies]
+click = ">=7"
+six = "*"
 
 [[package]]
 category = "main"
@@ -777,32 +781,32 @@ description = "Server-less Python Web Services for AWS Lambda and API Gateway"
 name = "zappa"
 optional = false
 python-versions = "*"
-version = "0.49.0"
+version = "0.51.0"
 
 [package.dependencies]
-PyYAML = ">=3.13"
-Werkzeug = ">=0.14"
-argcomplete = ">=1.9.3"
-boto3 = ">=1.4.7"
-durationpy = ">=0.5"
-future = ">=0.16.0"
-hjson = ">=3.0.1"
-jmespath = ">=0.9.3"
+PyYAML = "*"
+Werkzeug = "<1.0"
+argcomplete = "*"
+boto3 = "*"
+durationpy = "*"
+future = "*"
+hjson = "*"
+jmespath = "*"
 kappa = "0.6.0"
-lambda-packages = ">=0.20.0"
 pip = ">=9.0.1"
-python-dateutil = ">=2.6.1,<2.7.0"
-python-slugify = ">=1.2.4"
+pip-tools = "*"
+python-dateutil = "<2.7.0"
+python-slugify = "*"
 requests = ">=2.20.0"
-six = ">=1.11.0"
-toml = ">=0.9.4"
-tqdm = ">=4.19.1"
-troposphere = ">=1.9.0"
-wheel = ">=0.30.0"
-wsgi-request-logger = ">=0.4.6"
+six = "*"
+toml = "*"
+tqdm = "*"
+troposphere = "*"
+wheel = "*"
+wsgi-request-logger = "*"
 
 [metadata]
-content-hash = "93e8cd507000823fd5a28cea42d3d3f2276ccd8456919403e745cd7f833ba273"
+content-hash = "c232465540ed3fb09e8815e3d41c7a5126b627d8db474fd9bd102a0041aa2bd0"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -1010,9 +1014,6 @@ kappa = [
     {file = "kappa-0.6.0-py2-none-any.whl", hash = "sha256:4d6b7b3accce4a0aaaac92b36237a6304f0f2fffbbe3caea3f7c9f52d12c9989"},
     {file = "kappa-0.6.0.tar.gz", hash = "sha256:4b5b372872f25d619e427e04282551048dc975a107385b076b3ffc6406a15833"},
 ]
-lambda-packages = [
-    {file = "lambda_packages-0.20.0.tar.gz", hash = "sha256:b5e3b81ecef5f7c1b0903b5c40813536ba2343a33868a567e4e4ff1e26243406"},
-]
 oauthlib = [
     {file = "oauthlib-3.1.0-py2.py3-none-any.whl", hash = "sha256:df884cd6cbe20e32633f1db1072e9356f53638e4361bef4e8b03c9127c9328ea"},
     {file = "oauthlib-3.1.0.tar.gz", hash = "sha256:bee41cc35fcca6e988463cacc3bcb8a96224f470ca547e697b604cc697b2f889"},
@@ -1024,6 +1025,10 @@ pathspec = [
 pbr = [
     {file = "pbr-5.4.4-py2.py3-none-any.whl", hash = "sha256:61aa52a0f18b71c5cc58232d2cf8f8d09cd67fcad60b742a60124cb8d6951488"},
     {file = "pbr-5.4.4.tar.gz", hash = "sha256:139d2625547dbfa5fb0b81daebb39601c478c21956dc57e2e07b74450a8c506b"},
+]
+pip-tools = [
+    {file = "pip-tools-4.5.1.tar.gz", hash = "sha256:693f30e451875796b1b25203247f0b4cf48a4c4a5ab7341f4f33ffd498cdcc98"},
+    {file = "pip_tools-4.5.1-py2.py3-none-any.whl", hash = "sha256:be9c796aa88b2eec5cabf1323ba1cb60a08212b84bfb75b8b4037a8ef8cb8cb6"},
 ]
 placebo = [
     {file = "placebo-0.9.0.tar.gz", hash = "sha256:03157f8527bbc2965b71b88f4a139ef8038618b346787f20d63e3c5da541b047"},
@@ -1194,6 +1199,6 @@ wsgi-request-logger = [
     {file = "wsgi-request-logger-0.4.6.tar.gz", hash = "sha256:445d7ec52799562f812006394d0b4a7064b37084c6ea6bd74ea7a2136c97ed83"},
 ]
 zappa = [
-    {file = "zappa-0.49.0-py3-none-any.whl", hash = "sha256:063980343437bcf3a7e7c0dcd04f37f1d7ed463e2334863ec3047111fd748bb2"},
-    {file = "zappa-0.49.0.tar.gz", hash = "sha256:e75f9569b895d386e3067320adefa4b401e8a0a9f50ff600878d8931fd5d54b1"},
+    {file = "zappa-0.51.0-py3-none-any.whl", hash = "sha256:c6e740334c1c39e644a345124b7317003420b632a8f7a6811d18b82bb16e2f8e"},
+    {file = "zappa-0.51.0.tar.gz", hash = "sha256:ccfc336d3bc48a6898cbbd157e16653f717dbe3ca37f933ce40acfe242a03a40"},
 ]
