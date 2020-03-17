@@ -1,5 +1,7 @@
 from jira import JIRA, JIRAError
 
+from profile.models import UserSettings
+
 
 class JiraAPI:
     JQL_IN_PROGRESS = (
@@ -7,8 +9,13 @@ class JiraAPI:
     )
 
     def __init__(self, user):
-        settings = user.usersettings
         self.valid_credentials = False
+
+        try:
+            settings = UserSettings.objects.get(user=user)
+        except UserSettings.DoesNotExist:
+            return
+
         if settings.jira_server_url:
             try:
                 self.api = JIRA(
