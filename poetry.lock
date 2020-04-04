@@ -235,8 +235,8 @@ category = "main"
 description = "Easily encrypt data in Django"
 name = "django-cryptography"
 optional = false
-python-versions = "*"
-version = "0.4"
+python-versions = ">=3.5"
+version = "1.0"
 
 [package.dependencies]
 cryptography = "*"
@@ -805,7 +805,7 @@ wheel = "*"
 wsgi-request-logger = "*"
 
 [metadata]
-content-hash = "936753a192faa5a017c572a6431e1d5c9684faa8621ad5064d142511c54a21fd"
+content-hash = "16197b0e789fcd558782a5adc775139db752477609b64f4d57d86695b0dad7b2"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -961,8 +961,8 @@ django-configurations = [
     {file = "django_configurations-2.2-py2.py3-none-any.whl", hash = "sha256:0b93cb7042739e2d69cfc6fb81676bbd3cbb63ea19b02e8b681f4cad3a8aaf1b"},
 ]
 django-cryptography = [
-    {file = "django-cryptography-0.4.tar.gz", hash = "sha256:8736a51a88b7eb25e312ced8f510a1471fbcbff2a49da334a0af15a43fcb776c"},
-    {file = "django_cryptography-0.4-py2.py3-none-any.whl", hash = "sha256:9e6b0be85e18838e20dfb27a2b68fe5cefbfc689c9416b2ca54f6c0610dcab91"},
+    {file = "django-cryptography-1.0.tar.gz", hash = "sha256:13de5cf8f1250744c104b9e24774d03aa6d8488959dd40cdc016934043652445"},
+    {file = "django_cryptography-1.0-py3-none-any.whl", hash = "sha256:0a99980b1cee7cc5e52f9b20b322620fea7cc124d770273e7bd285b20fd9d222"},
 ]
 django-s3-sqlite = [
     {file = "django-s3-sqlite-0.0.2.tar.gz", hash = "sha256:3a6a694efa79dae0a56291271503d425a96df803c101e5bfe5d3e9b003ef1e20"},
