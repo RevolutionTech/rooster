@@ -1,7 +1,12 @@
 import os
 
-ZAPPA_COMMANDS_REQUIRE_SQLITE3 = ("deploy", "update")
-SQLITE3_SO_FILENAME = "_sqlite3.so"
+ZAPPA_COMMANDS_REQUIRE_LIB_FILES = ("deploy", "package", "update")
+SO_FILENAMES = [
+    "_sqlite3.so",
+    "_cffi_backend.cpython-38-x86_64-linux-gnu.so",
+    ".libs_cffi_backend",
+    "cryptography",
+]
 PROJECT_DIR = os.path.dirname(__file__)
 LIB_DIR = os.path.join(PROJECT_DIR, "lib")
 
@@ -22,15 +27,17 @@ def deactivate_shared_object(filename):
 
 def after_settings(zappa_cli):
     """
-    Activate sqlite3 so that it will be included in the zip package
+    Activate shared object files so that they will be included in the zip package
     """
-    if zappa_cli.command in ZAPPA_COMMANDS_REQUIRE_SQLITE3:
-        activate_shared_object(SQLITE3_SO_FILENAME)
+    if zappa_cli.command in ZAPPA_COMMANDS_REQUIRE_LIB_FILES:
+        for filename in SO_FILENAMES:
+            activate_shared_object(filename)
 
 
 def after_zip(zappa_cli):
     """
-    Deactivate sqlite3 so that it won't be used during development
+    Deactivate shared object files so that they won't be used during development
     """
-    if zappa_cli.command in ZAPPA_COMMANDS_REQUIRE_SQLITE3:
-        deactivate_shared_object(SQLITE3_SO_FILENAME)
+    if zappa_cli.command in ZAPPA_COMMANDS_REQUIRE_LIB_FILES:
+        for filename in SO_FILENAMES:
+            deactivate_shared_object(filename)
