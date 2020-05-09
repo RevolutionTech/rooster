@@ -8,11 +8,9 @@ import os
 from configurations import Configuration, values
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
 class BaseConfig(Configuration):
-    DOTENV = os.path.join(BASE_DIR, ".env")
+
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     SECRET_KEY = values.SecretValue()
     DEBUG = True
@@ -104,7 +102,6 @@ class BaseConfig(Configuration):
 
 
 class ProdConfig(BaseConfig):
-    DOTENV = None
 
     DEBUG = False
     ALLOWED_HOSTS = ["standup.revolutiontech.ca"]
