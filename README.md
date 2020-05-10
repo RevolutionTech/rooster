@@ -30,13 +30,13 @@ where `$DECRYPT_PASSWORD` contains the key that the settings were encrypted with
 
     poetry run zappa deploy
 
-Once deployed, you will need to set environment variables on the generated Lambda. See `prod.py` for additional environment variables used in production.
+Once deployed, you will need to set environment variables on the generated Lambda. See `ProdConfig` for additional environment variables used in production.
 
 Then to publish static assets, run the `manage.py collectstatic` command locally, setting the environment variables for AWS credentials to the values used in production:
 
     DJANGO_CONFIGURATION=ProdConfig DJANGO_AWS_ACCESS_KEY_ID=1234 DJANGO_AWS_SECRET_ACCESS_KEY=abc123 poetry run python manage.py collectstatic --noinput
 
-You may also need to update `ALLOWED_HOSTS` in `rooster.settings.ProdConfig` to match the assigned URL for the Lambda. Once completed, the assigned URL should be running Rooster.
+You may also need to update `ALLOWED_HOSTS` in `ProdConfig` to match the assigned URL for the Lambda. Once completed, the assigned URL should be running Rooster.
 
 If any changes to `zappa_settings.json` are made, the file should be re-encrypted before being committed. The following bash functions may be helpful for encrypting/decrypting:
 
