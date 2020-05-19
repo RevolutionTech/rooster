@@ -1,6 +1,6 @@
-from jira import JIRA, JIRAError
-
 from profile.models import UserSettings
+
+from jira import JIRA, JIRAError
 
 
 class JiraAPI:
