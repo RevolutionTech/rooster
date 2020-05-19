@@ -1,6 +1,7 @@
+from profile.models import UserSettings
+
 import factory
 
-from profile.models import UserSettings
 from rooster.factories import UserFactory
 
 

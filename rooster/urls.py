@@ -1,7 +1,7 @@
-from django.conf.urls import url
-from django.urls import path, include
-
 from profile.views import DashboardView, SettingsView
+
+from django.conf.urls import url
+from django.urls import include, path
 
 urlpatterns = [
     url("", include("social_django.urls", namespace="social")),

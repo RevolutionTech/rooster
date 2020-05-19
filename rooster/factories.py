@@ -1,7 +1,6 @@
+import factory
 from django.contrib.auth.models import User
 from social_django.models import UserSocialAuth
-
-import factory
 
 
 class UserFactory(factory.DjangoModelFactory):

@@ -1,10 +1,11 @@
+from profile.models import UserSettings
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView
 
 from githubapi.api import GithubAPI
 from jiraapi.api import JiraAPI
-from profile.models import UserSettings
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
