@@ -651,11 +651,11 @@ description = "Python Social Authentication, Django integration."
 name = "social-auth-app-django"
 optional = false
 python-versions = "*"
-version = "3.1.0"
+version = "3.4.0"
 
 [package.dependencies]
 six = "*"
-social-auth-core = ">=1.2.0"
+social-auth-core = ">=3.3.0"
 
 [[package]]
 category = "main"
@@ -663,10 +663,11 @@ description = "Python social authentication made simple."
 name = "social-auth-core"
 optional = false
 python-versions = "*"
-version = "3.2.0"
+version = "3.3.3"
 
 [package.dependencies]
 PyJWT = ">=1.4.0"
+cryptography = ">=1.4"
 oauthlib = ">=1.0.3"
 requests = ">=2.9.1"
 requests-oauthlib = ">=0.6.1"
@@ -681,12 +682,12 @@ python = ">=3.0"
 version = ">=3.0.10"
 
 [package.extras]
-all = ["cryptography (>=2.1.1)", "pyjwt (>=1.7.1)", "python-jose (>=3.0.0)", "python-saml (>=2.2.0)", "python3-saml (>=1.2.1)"]
-allpy2 = ["cryptography (>=2.1.1)", "pyjwt (>=1.7.1)", "python-jose (>=3.0.0)", "python-openid (>=2.2.5)", "python-saml (>=2.2.0)", "python3-saml (>=1.2.1)"]
-allpy3 = ["cryptography (>=2.1.1)", "defusedxml (>=0.5.0rc1)", "pyjwt (>=1.7.1)", "python-jose (>=3.0.0)", "python-saml (>=2.2.0)", "python3-openid (>=3.0.10)", "python3-saml (>=1.2.1)"]
+all = ["python-jose (>=3.0.0)", "pyjwt (>=1.7.1)", "python-saml (>=2.2.0)", "cryptography (>=2.1.1)"]
+allpy2 = ["python-jose (>=3.0.0)", "pyjwt (>=1.7.1)", "python-saml (>=2.2.0)", "cryptography (>=2.1.1)", "python-openid (>=2.2.5)"]
+allpy3 = ["python-jose (>=3.0.0)", "pyjwt (>=1.7.1)", "python-saml (>=2.2.0)", "cryptography (>=2.1.1)", "defusedxml (>=0.5.0rc1)", "python3-openid (>=3.0.10)"]
 azuread = ["cryptography (>=2.1.1)"]
-openidconnect = ["pyjwt (>=1.7.1)", "python-jose (>=3.0.0)"]
-saml = ["python-saml (>=2.2.0)", "python3-saml (>=1.2.1)"]
+openidconnect = ["python-jose (>=3.0.0)", "pyjwt (>=1.7.1)"]
+saml = ["python-saml (>=2.2.0)"]
 
 [[package]]
 category = "main"
@@ -842,7 +843,7 @@ wheel = "*"
 wsgi-request-logger = "*"
 
 [metadata]
-content-hash = "b13b79e9ed9a37eee2746de5f25970889a81e0ffd1d3b72246887292bf6d6dbf"
+content-hash = "c83e8d7d618d8f17ffaf93e3079a1c579a9ec10e53458f6ebf2b8e08cda7b255"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1170,14 +1171,14 @@ six = [
     {file = "six-1.13.0.tar.gz", hash = "sha256:30f610279e8b2578cab6db20741130331735c781b56053c59c4076da27f06b66"},
 ]
 social-auth-app-django = [
-    {file = "social-auth-app-django-3.1.0.tar.gz", hash = "sha256:6d0dd18c2d9e71ca545097d57b44d26f59e624a12833078e8e52f91baf849778"},
-    {file = "social_auth_app_django-3.1.0-py2-none-any.whl", hash = "sha256:f151396e5b16e2eee12cd2e211004257826ece24fc4ae97a147df386c1cd7082"},
-    {file = "social_auth_app_django-3.1.0-py3-none-any.whl", hash = "sha256:9237e3d7b6f6f59494c3b02e0cce6efc69c9d33ad9d1a064e3b2318bcbe89ae3"},
+    {file = "social-auth-app-django-3.4.0.tar.gz", hash = "sha256:09575f5c7dd91465df3a898c58e7c4ae1e78f31edba36b8b7be47ab0aeef2789"},
+    {file = "social_auth_app_django-3.4.0-py2-none-any.whl", hash = "sha256:02b561e175d4a93896e4436b591586b61e647bd8eeef14c99a26344eb3b48d0e"},
+    {file = "social_auth_app_django-3.4.0-py3-none-any.whl", hash = "sha256:47d1720115a9eaad78a67e99987d556abaa01222b9c2b9538182bbdbb10304ba"},
 ]
 social-auth-core = [
-    {file = "social-auth-core-3.2.0.tar.gz", hash = "sha256:8320666548a532eb158968eda542bbe1863682357c432d8c4e28034a7f1e3b58"},
-    {file = "social_auth_core-3.2.0-py2-none-any.whl", hash = "sha256:d81ed681e3c0722300b61a0792c5db5d21206793f95ca810f010c1cc931c8d89"},
-    {file = "social_auth_core-3.2.0-py3-none-any.whl", hash = "sha256:47cd2458c8fefd02466b0c514643e02ad8b61d8b4b69f7573e80882e3a97b0f0"},
+    {file = "social-auth-core-3.3.3.tar.gz", hash = "sha256:2f6ce1af8ec2b2cc37b86d647f7d4e4292f091ee556941db34b1e0e2dee77fc0"},
+    {file = "social_auth_core-3.3.3-py2-none-any.whl", hash = "sha256:4a3cdf69c449b235cdabd54a1be7ba3722611297e69fded52e3584b1a990af25"},
+    {file = "social_auth_core-3.3.3-py3-none-any.whl", hash = "sha256:21c0639c56befd33ec162c2210d583bb1de8e1136d53b21bafb96afaf2f86c91"},
 ]
 sqlparse = [
     {file = "sqlparse-0.3.0-py2.py3-none-any.whl", hash = "sha256:40afe6b8d4b1117e7dff5504d7a8ce07d9a1b15aeeade8a2d10f130a834f8177"},
