@@ -20,11 +20,11 @@ class GithubAPI:
         github_authenticated_user = self.api.get_user()
         self.github_named_user = self.get_user(github_authenticated_user.login)
 
-    @functools.lru_cache()
+    @functools.lru_cache
     def get_user(self, login):
         return self.api.get_user(login)
 
-    @functools.lru_cache()
+    @functools.lru_cache
     def get_repo(self, repo_id):
         return self.api.get_repo(repo_id)
 
