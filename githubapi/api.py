@@ -65,6 +65,9 @@ class GithubAPI:
                     yield event
 
     def get_events(self):
+        return [e.to_json() for e in self.get_unique_events()]
+
+    def get_events_for_dashboard(self):
         all_events = self.get_unique_events()
         sorted_events = sorted(
             all_events,

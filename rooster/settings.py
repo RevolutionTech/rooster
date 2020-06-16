@@ -27,6 +27,7 @@ class BaseConfig(Configuration):
         "django_s3_sqlite",
         "django_s3_storage",
         "social_django",
+        "rest_framework",
         "tz_detect",
         "githubapi.apps.GithubApiConfig",
         "jiraapi.apps.JiraApiConfig",

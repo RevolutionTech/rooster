@@ -6,7 +6,7 @@
         <ul>
             {% for ticket in tickets %}
                 <li>
-                    <a href="{{ ticket.url }}">{{ ticket.key }}</a>:
+                    <a href="{{ ticket.url }}">{{ ticket.issue_key }}</a>:
                     {{ ticket.summary }}
                 </li>
             {% empty %}
