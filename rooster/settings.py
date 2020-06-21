@@ -26,7 +26,6 @@ class BaseConfig(Configuration):
         "django.contrib.staticfiles",
         "django_s3_sqlite",
         "django_s3_storage",
-        "corsheaders",
         "social_django",
         "rest_framework",
         "tz_detect",
@@ -37,7 +36,6 @@ class BaseConfig(Configuration):
     MIDDLEWARE = [
         "django.middleware.security.SecurityMiddleware",
         "django.contrib.sessions.middleware.SessionMiddleware",
-        "corsheaders.middleware.CorsMiddleware",
         "django.middleware.common.CommonMiddleware",
         "django.middleware.csrf.CsrfViewMiddleware",
         "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -87,10 +85,7 @@ class BaseConfig(Configuration):
     SOCIAL_AUTH_GITHUB_SECRET = values.SecretValue()
     SOCIAL_AUTH_GITHUB_SCOPE = ["repo"]
     LOGIN_URL = "/login/github/"
-
-    @property
-    def LOGIN_REDIRECT_URL(self):
-        return self.FRONTEND_ORIGIN
+    LOGIN_REDIRECT_URL = "/"
 
     # Internationalization
     # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -106,29 +101,12 @@ class BaseConfig(Configuration):
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-    # Cross-Domain
-    FRONTEND_HOST = "localhost:3000"
-    FRONTEND_ORIGIN = f"http://{FRONTEND_HOST}"
-    CORS_URLS_REGEX = r"^/api/.*$"
-    CORS_ALLOW_CREDENTIALS = True
-
-    @property
-    def CSRF_COOKIE_DOMAIN(self):
-        return self.FRONTEND_HOST
-
-    @property
-    def SESSION_COOKIE_DOMAIN(self):
-        return self.FRONTEND_HOST
-
-    @property
-    def CORS_ORIGIN_WHITELIST(self):
-        return [self.FRONTEND_ORIGIN]
-
 
 class ProdConfig(BaseConfig):
 
     DEBUG = False
-    ALLOWED_HOSTS = ["api.standup.revolutiontech.ca"]
+    ALLOWED_HOSTS = ["standup.revolutiontech.ca"]
+    USE_X_FORWARDED_HOST = True
 
     # Database
     DATABASES = {
@@ -148,7 +126,3 @@ class ProdConfig(BaseConfig):
     STATIC_URL = f"https://{AWS_S3_BUCKET_NAME_STATIC}.s3.amazonaws.com/{AWS_S3_KEY_PREFIX_STATIC}/"
     AWS_ACCESS_KEY_ID = values.SecretValue()
     AWS_SECRET_ACCESS_KEY = values.SecretValue()
-
-    # Cross-Domain
-    FRONTEND_HOST = "standup.revolutiontech.ca"
-    FRONTEND_ORIGIN = f"https://{FRONTEND_HOST}"

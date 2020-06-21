@@ -244,17 +244,6 @@ testing = ["django-discover-runner", "mock", "django-cache-url (>=1.0.0)", "dj-d
 
 [[package]]
 category = "main"
-description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
-name = "django-cors-headers"
-optional = false
-python-versions = ">=3.5"
-version = "3.4.0"
-
-[package.dependencies]
-Django = ">=2.0"
-
-[[package]]
-category = "main"
 description = "Easily encrypt data in Django"
 name = "django-cryptography"
 optional = false
@@ -865,7 +854,7 @@ wheel = "*"
 wsgi-request-logger = "*"
 
 [metadata]
-content-hash = "02b5b9e028a40da626df8ef2e3ff80138b59d261aeb66240ce90ee40ee37915d"
+content-hash = "aa81de90cc53578fcac2e2269a98e7ee92049fda1e7974256aa7a6374aa59e9e"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1023,10 +1012,6 @@ django-appconf = [
 django-configurations = [
     {file = "django-configurations-2.2.tar.gz", hash = "sha256:9e3bcea1355ac50a4c9f854f751d214cb17e5f8adf18405a4488d0a1e8945915"},
     {file = "django_configurations-2.2-py2.py3-none-any.whl", hash = "sha256:0b93cb7042739e2d69cfc6fb81676bbd3cbb63ea19b02e8b681f4cad3a8aaf1b"},
-]
-django-cors-headers = [
-    {file = "django-cors-headers-3.4.0.tar.gz", hash = "sha256:f5218f2f0bb1210563ff87687afbf10786e080d8494a248e705507ebd92d7153"},
-    {file = "django_cors_headers-3.4.0-py3-none-any.whl", hash = "sha256:5240062ef0b16668ce8a5f43324c388d65f5439e1a30e22c38684d5ddaff0d15"},
 ]
 django-cryptography = [
     {file = "django-cryptography-1.0.tar.gz", hash = "sha256:13de5cf8f1250744c104b9e24774d03aa6d8488959dd40cdc016934043652445"},
