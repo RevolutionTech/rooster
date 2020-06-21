@@ -87,7 +87,10 @@ class BaseConfig(Configuration):
     SOCIAL_AUTH_GITHUB_SECRET = values.SecretValue()
     SOCIAL_AUTH_GITHUB_SCOPE = ["repo"]
     LOGIN_URL = "/login/github/"
-    LOGIN_REDIRECT_URL = "/"
+
+    @property
+    def LOGIN_REDIRECT_URL(self):
+        return self.FRONTEND_ORIGIN
 
     # Internationalization
     # https://docs.djangoproject.com/en/3.0/topics/i18n/
