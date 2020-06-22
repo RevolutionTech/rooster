@@ -3,6 +3,7 @@ from profile.views import (
     ActivityHistoryAPIView,
     DashboardView,
     SettingsView,
+    UserAPIView,
 )
 
 from django.conf.urls import url
@@ -13,6 +14,7 @@ urlpatterns = [
     url(r"^tz_detect/", include("tz_detect.urls")),
     path("dashboard", DashboardView.as_view(), name="dashboard"),
     path("settings", SettingsView.as_view(), name="settings"),
+    path("api/user/", UserAPIView.as_view(), name="user"),
     path(
         "api/activities/in-progress/",
         ActivitiesInProgressAPIView.as_view(),

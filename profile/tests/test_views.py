@@ -97,6 +97,17 @@ class TestSettingsView(TestCase):
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
 
+class TestUserAPIView(TestCase):
+    def test_get_user(self):
+        user = UserFactory()
+
+        self.client.force_login(user)
+
+        response = self.client.get("/api/user/")
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertEqual(response.json(), {"full_name": user.get_full_name()})
+
+
 class TestActivitiesInProgressAPIView(TestCase):
     @mock.patch("profile.views.JiraAPI.get_in_progress_tickets")
     @mock.patch("jiraapi.api.JIRA.__init__", return_value=None)

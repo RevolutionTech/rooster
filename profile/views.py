@@ -43,6 +43,15 @@ class SettingsView(LoginRequiredMixin, UpdateView):
         return user_settings
 
 
+class UserAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        data = {"full_name": user.get_full_name()}
+        return Response(data, status=status.HTTP_200_OK)
+
+
 class ActivitiesInProgressAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
