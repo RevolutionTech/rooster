@@ -7,10 +7,12 @@ from profile.views import (
 )
 
 from django.conf.urls import url
+from django.contrib.auth.views import LogoutView
 from django.urls import include, path
 
 urlpatterns = [
     url("", include("social_django.urls", namespace="social")),
+    url("logout/", LogoutView.as_view(), name="auth_logout"),
     url(r"^tz_detect/", include("tz_detect.urls")),
     path("dashboard", DashboardView.as_view(), name="dashboard"),
     path("settings", SettingsView.as_view(), name="settings"),
