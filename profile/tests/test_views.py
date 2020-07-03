@@ -1,5 +1,7 @@
 import datetime
 from http import HTTPStatus
+from profile.models import UserSettings
+from profile.tests.factories import UserSettingsFactory
 from unittest import mock
 
 import pytz
@@ -197,3 +199,57 @@ class TestActivityHistoryAPIView(TestCase):
 
         mock_githubapi_init.assert_called_once_with(user)
         mock_get_events.assert_called_once()
+
+
+class TestSettingsAPIView(TestCase):
+    JIRA_SETTINGS = {"jira_server_url", "jira_email", "jira_api_key"}
+
+    def test_get_settings(self):
+        user = UserFactory()
+        self.client.force_login(user)
+
+        response = self.client.get("/api/settings/")
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertEqual(
+            response.json(),
+            {
+                setting: getattr(user.usersettings, setting)
+                for setting in self.JIRA_SETTINGS
+            },
+        )
+
+    def test_create_empty_settings(self):
+        user = UserFactory()
+        user.usersettings.delete()
+
+        self.client.force_login(user)
+
+        response = self.client.get("/api/settings/")
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertEqual(
+            response.json(), {setting: "" for setting in self.JIRA_SETTINGS},
+        )
+
+        # Validate that user settings were created
+        self.assertTrue(UserSettings.objects.filter(user=user).exists())
+
+    def test_put_settings(self):
+        user = UserFactory()
+        settings_data = UserSettingsFactory.stub()
+        self.client.force_login(user)
+
+        request_data = {
+            setting: getattr(settings_data, setting) for setting in self.JIRA_SETTINGS
+        }
+        response = self.client.put(
+            "/api/settings/", request_data, content_type="application/json"
+        )
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertEqual(response.json(), request_data)
+
+        # Validate that user settings were updated
+        user.usersettings.refresh_from_db()
+        for setting in self.JIRA_SETTINGS:
+            self.assertEqual(
+                getattr(user.usersettings, setting), getattr(settings_data, setting)
+            )

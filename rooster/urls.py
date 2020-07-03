@@ -2,6 +2,7 @@ from profile.views import (
     ActivitiesInProgressAPIView,
     ActivityHistoryAPIView,
     DashboardView,
+    SettingsAPIView,
     SettingsView,
     UserAPIView,
 )
@@ -15,7 +16,7 @@ urlpatterns = [
     url("logout/", LogoutView.as_view(), name="auth_logout"),
     url(r"^tz_detect/", include("tz_detect.urls")),
     path("dashboard", DashboardView.as_view(), name="dashboard"),
-    path("settings", SettingsView.as_view(), name="settings"),
+    path("settings", SettingsView.as_view(), name="settings_page"),
     path("api/user/", UserAPIView.as_view(), name="user"),
     path(
         "api/activities/in-progress/",
@@ -27,4 +28,5 @@ urlpatterns = [
         ActivityHistoryAPIView.as_view(),
         name="activities_history",
     ),
+    path("api/settings/", SettingsAPIView.as_view(), name="settings"),
 ]
