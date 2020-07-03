@@ -24,21 +24,6 @@ class BaseEvent:
             self.pull_request["id"],
         )
 
-    def get_context_data(self):
-        repo = self.api.get_repo(self.repo.id)
-        pull_request_author = self.api.get_user(self.pull_request["user"]["login"])
-
-        return {
-            "created_at": self.created_at,
-            "subheader": self.subheader,
-            "repo": {"name": repo.name, "url": repo.html_url},
-            "pull_request": {
-                "title": self.pull_request["title"],
-                "url": self.pull_request["html_url"],
-                "author": pull_request_author.name or pull_request_author.login,
-            },
-        }
-
     def to_json(self):
         repo = self.api.get_repo(self.repo.id)
         pull_request_author = self.api.get_user(self.pull_request["user"]["login"])

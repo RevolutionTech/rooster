@@ -279,19 +279,6 @@ django = ">=1.11"
 
 [[package]]
 category = "main"
-description = "Automatic user timezone detection for django"
-name = "django-tz-detect"
-optional = false
-python-versions = "*"
-version = "0.3.0"
-
-[package.dependencies]
-django = ">=1.4.2"
-pytz = "*"
-six = "*"
-
-[[package]]
-category = "main"
 description = "Web APIs for Django, made easy."
 name = "djangorestframework"
 optional = false
@@ -854,7 +841,7 @@ wheel = "*"
 wsgi-request-logger = "*"
 
 [metadata]
-content-hash = "aa81de90cc53578fcac2e2269a98e7ee92049fda1e7974256aa7a6374aa59e9e"
+content-hash = "da76178c6df807ad4e642ecb775b20ca532eda7873b72c1152dccfca31c2cb0a"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1023,10 +1010,6 @@ django-s3-sqlite = [
 ]
 django-s3-storage = [
     {file = "django-s3-storage-0.13.2.tar.gz", hash = "sha256:f938740590ab5e5189653228e52094ddacaaf0f0faf0d719ca7a0b2391906161"},
-]
-django-tz-detect = [
-    {file = "django-tz-detect-0.3.0.tar.gz", hash = "sha256:fb94506a52a4d2d46e1aca007d0c7101903c037203bf69a2bbc186f0721a777b"},
-    {file = "django_tz_detect-0.3.0-py2.py3-none-any.whl", hash = "sha256:4c13811c21a7a233171392b5bb639a891b4241ca4a45b38ddbb19d348b5b3e07"},
 ]
 djangorestframework = [
     {file = "djangorestframework-3.11.0-py3-none-any.whl", hash = "sha256:05809fc66e1c997fd9a32ea5730d9f4ba28b109b9da71fccfa5ff241201fd0a4"},

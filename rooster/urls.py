@@ -1,9 +1,7 @@
 from profile.views import (
     ActivitiesInProgressAPIView,
     ActivityHistoryAPIView,
-    DashboardView,
     SettingsAPIView,
-    SettingsView,
     UserAPIView,
 )
 
@@ -14,9 +12,6 @@ from django.urls import include, path
 urlpatterns = [
     url("", include("social_django.urls", namespace="social")),
     url("logout/", LogoutView.as_view(), name="auth_logout"),
-    url(r"^tz_detect/", include("tz_detect.urls")),
-    path("dashboard", DashboardView.as_view(), name="dashboard"),
-    path("settings", SettingsView.as_view(), name="settings_page"),
     path("api/user/", UserAPIView.as_view(), name="user"),
     path(
         "api/activities/in-progress/",

@@ -28,7 +28,6 @@ class BaseConfig(Configuration):
         "django_s3_storage",
         "social_django",
         "rest_framework",
-        "tz_detect",
         "githubapi.apps.GithubApiConfig",
         "jiraapi.apps.JiraApiConfig",
         "profile.apps.ProfileConfig",
@@ -41,14 +40,13 @@ class BaseConfig(Configuration):
         "django.contrib.auth.middleware.AuthenticationMiddleware",
         "django.contrib.messages.middleware.MessageMiddleware",
         "django.middleware.clickjacking.XFrameOptionsMiddleware",
-        "tz_detect.middleware.TimezoneMiddleware",
     ]
     ROOT_URLCONF = "rooster.urls"
 
     TEMPLATES = [
         {
             "BACKEND": "django.template.backends.django.DjangoTemplates",
-            "DIRS": [os.path.join(BASE_DIR, "templates")],
+            "DIRS": [],
             "APP_DIRS": True,
             "OPTIONS": {
                 "context_processors": [

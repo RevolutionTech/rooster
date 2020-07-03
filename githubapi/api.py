@@ -66,16 +66,3 @@ class GithubAPI:
 
     def get_events(self):
         return [e.to_json() for e in self.get_unique_events()]
-
-    def get_events_for_dashboard(self):
-        all_events = self.get_unique_events()
-        sorted_events = sorted(
-            all_events,
-            key=lambda e: (
-                e.created_at.date(),
-                e.subheader.lower(),
-                e.created_at.time(),
-            ),
-            reverse=True,
-        )
-        return [e.get_context_data() for e in sorted_events]
