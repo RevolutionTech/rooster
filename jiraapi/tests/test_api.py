@@ -35,12 +35,12 @@ class TestGetInProgressTickets(TestCase):
 
         expected = [
             {
-                "key": "FOO-101",
+                "issue_key": "FOO-101",
                 "summary": "Create parent class for bar",
                 "url": f"{jira_server_url}/browse/FOO-101",
             },
             {
-                "key": "FOO-100",
+                "issue_key": "FOO-100",
                 "summary": "Add bar to Foo",
                 "url": f"{jira_server_url}/browse/FOO-100",
             },

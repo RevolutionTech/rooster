@@ -31,7 +31,7 @@ class JiraAPI:
             issues_in_progress = self.api.search_issues(self.JQL_IN_PROGRESS)
             return [
                 {
-                    "key": issue.key,
+                    "issue_key": issue.key,
                     "summary": issue.fields.summary,
                     "url": issue.permalink(),
                 }

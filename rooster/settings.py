@@ -27,7 +27,7 @@ class BaseConfig(Configuration):
         "django_s3_sqlite",
         "django_s3_storage",
         "social_django",
-        "tz_detect",
+        "rest_framework",
         "githubapi.apps.GithubApiConfig",
         "jiraapi.apps.JiraApiConfig",
         "profile.apps.ProfileConfig",
@@ -40,14 +40,13 @@ class BaseConfig(Configuration):
         "django.contrib.auth.middleware.AuthenticationMiddleware",
         "django.contrib.messages.middleware.MessageMiddleware",
         "django.middleware.clickjacking.XFrameOptionsMiddleware",
-        "tz_detect.middleware.TimezoneMiddleware",
     ]
     ROOT_URLCONF = "rooster.urls"
 
     TEMPLATES = [
         {
             "BACKEND": "django.template.backends.django.DjangoTemplates",
-            "DIRS": [os.path.join(BASE_DIR, "templates")],
+            "DIRS": [],
             "APP_DIRS": True,
             "OPTIONS": {
                 "context_processors": [
@@ -85,6 +84,7 @@ class BaseConfig(Configuration):
     SOCIAL_AUTH_GITHUB_SCOPE = ["repo"]
     LOGIN_URL = "/login/github/"
     LOGIN_REDIRECT_URL = "/"
+    LOGOUT_REDIRECT_URL = "/"
 
     # Internationalization
     # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -105,6 +105,7 @@ class ProdConfig(BaseConfig):
 
     DEBUG = False
     ALLOWED_HOSTS = ["standup.revolutiontech.ca"]
+    USE_X_FORWARDED_HOST = True
 
     # Database
     DATABASES = {

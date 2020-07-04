@@ -15,9 +15,9 @@ PyGithub = "^1.51"
 zappa = "^0.51"
 django-s3-sqlite = "^0.0.3"
 django-s3-storage = "^0.13.2"
-django-tz-detect = "^0.3.0"
 jira = "^2.0"
 django-cryptography = "^1.0"
+djangorestframework = "^3.11.0"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
