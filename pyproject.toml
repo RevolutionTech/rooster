@@ -8,7 +8,7 @@ license = "ISC"
 [tool.poetry.dependencies]
 python = "^3.8"
 Django = "~3.0"
-python-dotenv = "^0.13.0"
+python-dotenv = "^0.14.0"
 django-configurations = "^2.2"
 social-auth-app-django = "^4.0"
 PyGithub = "^1.51"
