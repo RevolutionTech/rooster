@@ -358,7 +358,7 @@ description = "A Python utility / library to sort Python imports."
 name = "isort"
 optional = false
 python-versions = ">=3.6,<4.0"
-version = "5.2.2"
+version = "5.4.2"
 
 [package.extras]
 colors = ["colorama (>=0.4.3,<0.5.0)"]
@@ -840,7 +840,8 @@ wheel = "*"
 wsgi-request-logger = "*"
 
 [metadata]
-content-hash = "8b2e45130e391977da8549eb78fe44130f1e8263fc0316d7823361151224428b"
+content-hash = "18d542ade29b2951a8a1e70700282c01def57b08ec88eda5270829958461ef0a"
+lock-version = "1.0"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1044,8 +1045,8 @@ idna = [
     {file = "idna-2.8.tar.gz", hash = "sha256:c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407"},
 ]
 isort = [
-    {file = "isort-5.2.2-py3-none-any.whl", hash = "sha256:aea484023188ef1c38256dd24afa96e914adafe3a911a1786800a74e433006d1"},
-    {file = "isort-5.2.2.tar.gz", hash = "sha256:96b27045e3187b9bdde001143b79f9b10a462f372bff7062302818013b6c86f3"},
+    {file = "isort-5.4.2-py3-none-any.whl", hash = "sha256:60a1b97e33f61243d12647aaaa3e6cc6778f5eb9f42997650f1cc975b6008750"},
+    {file = "isort-5.4.2.tar.gz", hash = "sha256:d488ba1c5a2db721669cc180180d5acf84ebdc5af7827f7aaeaa75f73cf0e2b8"},
 ]
 jira = [
     {file = "jira-2.0.0-py2.py3-none-any.whl", hash = "sha256:9adeead4d5f5a6aff74c630787f8bd2d4b0e154f3a3036641298064e91b2d25d"},
