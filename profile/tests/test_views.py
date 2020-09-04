@@ -45,7 +45,8 @@ class TestActivitiesInProgressAPIView(TestCase):
         response = self.client.get("/api/activities/in-progress/")
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(
-            response.json(), {"jira_tickets": jira_tickets},
+            response.json(),
+            {"jira_tickets": jira_tickets},
         )
 
         mock_jira_init.assert_called_once()
@@ -53,7 +54,9 @@ class TestActivitiesInProgressAPIView(TestCase):
 
 
 class TestActivityHistoryAPIView(TestCase):
-    @mock.patch("profile.views.GithubAPI.get_events",)
+    @mock.patch(
+        "profile.views.GithubAPI.get_events",
+    )
     @mock.patch("profile.views.GithubAPI.__init__", return_value=None)
     def test_get_activity_history(self, mock_githubapi_init, mock_get_events):
         events = [
@@ -142,7 +145,8 @@ class TestSettingsAPIView(TestCase):
         response = self.client.get("/api/settings/")
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(
-            response.json(), {setting: "" for setting in self.JIRA_SETTINGS},
+            response.json(),
+            {setting: "" for setting in self.JIRA_SETTINGS},
         )
 
         # Validate that user settings were created
