@@ -5,7 +5,7 @@ import factory
 from rooster.factories import UserFactory
 
 
-class UserSettingsFactory(factory.DjangoModelFactory):
+class UserSettingsFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = UserSettings
 

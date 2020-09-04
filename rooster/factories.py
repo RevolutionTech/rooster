@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from social_django.models import UserSocialAuth
 
 
-class UserFactory(factory.DjangoModelFactory):
+class UserFactory(factory.django.DjangoModelFactory):
 
     _PASSWORD = "abc123"
 
@@ -22,7 +22,7 @@ class UserFactory(factory.DjangoModelFactory):
     )
 
 
-class UserSocialAuthFactory(factory.DjangoModelFactory):
+class UserSocialAuthFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = UserSocialAuth
 

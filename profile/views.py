@@ -1,3 +1,4 @@
+import logging
 from profile.models import UserSettings
 from profile.serializers import UserSerializer, UserSettingsSerializer
 
@@ -10,17 +11,29 @@ from rest_framework.views import APIView
 from githubapi.api import GithubAPI
 from jiraapi.api import JiraAPI
 
+logger = logging.getLogger(__name__)
+
+
+class IsAuthenticatedWLogging(IsAuthenticated):
+    def has_permission(self, request, view):
+        result = super().has_permission(request, view)
+        if not result:
+            logger.info(
+                "%s: user: %s; cookies: %s", request.path, request.user, request.COOKIES
+            )
+        return result
+
 
 class UserAPIView(RetrieveAPIView):
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedWLogging]
 
     def get_object(self):
         return self.request.user
 
 
 class ActivitiesInProgressAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedWLogging]
 
     def get(self, request):
         user = request.user
@@ -30,7 +43,7 @@ class ActivitiesInProgressAPIView(APIView):
 
 
 class ActivityHistoryAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedWLogging]
 
     def get(self, request):
         user = request.user
@@ -40,7 +53,7 @@ class ActivityHistoryAPIView(APIView):
 
 class SettingsAPIView(RetrieveUpdateAPIView):
     serializer_class = UserSettingsSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedWLogging]
 
     def get_object(self):
         user_settings, _ = UserSettings.objects.get_or_create(user=self.request.user)
