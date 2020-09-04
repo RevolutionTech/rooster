@@ -100,6 +100,14 @@ class BaseConfig(Configuration):
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
+    # Logging
+    LOGGING = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "handlers": {"console": {"class": "logging.StreamHandler"}},
+        "root": {"handlers": ["console"], "level": "INFO"},
+    }
+
 
 class ProdConfig(BaseConfig):
 
