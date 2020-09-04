@@ -23,7 +23,7 @@ djangorestframework = "^3.11.0"
 black = "^19.10b0"
 pyupgrade = "^2.7"
 coverage = "^5.2"
-factory-boy = "^2.12"
+factory-boy = "^3.0"
 isort = "^5.5.0"
 
 [tool.isort]
