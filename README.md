@@ -22,19 +22,17 @@ With everything installed and all files in place, you may now create the databas
 
 ### Deployment
 
-Deployments are done using `zappa`. First, you will need to decrypt the `zappa_settings.json.enc` to `zappa_settings.json`:
+Rooster is deployed as a `zappa` app on AWS Lambda. To modify the deployment settings, first you will need to decrypt the `zappa_settings.json.enc` to `zappa_settings.json`:
 
     openssl aes-256-cbc -k $DECRYPT_PASSWORD -in zappa_settings.json.enc -out zappa_settings.json -d
 
-where `$DECRYPT_PASSWORD` contains the key that the settings were encrypted with. Then, use `zappa` to deploy to the production environment:
+where `$DECRYPT_PASSWORD` contains the key that the settings were encrypted with.
+
+Then, generate a Docker container and run the container to execute zappa commands, such as `deploy`:
 
     poetry run zappa deploy
 
 Once deployed, you will need to set environment variables on the generated Lambda. See `ProdConfig` for additional environment variables used in production.
-
-Then to publish static assets, run the `manage.py collectstatic` command locally, setting the environment variables for AWS credentials to the values used in production:
-
-    DJANGO_CONFIGURATION=ProdConfig DJANGO_AWS_ACCESS_KEY_ID=1234 DJANGO_AWS_SECRET_ACCESS_KEY=abc123 poetry run python manage.py collectstatic --noinput
 
 You may also need to update `ALLOWED_HOSTS` in `ProdConfig` to match the assigned URL for the Lambda. Once completed, the assigned URL should be running Rooster.
 
