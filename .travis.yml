@@ -27,6 +27,7 @@ before_deploy:
   - wget -O lib/_sqlite3.so https://github.com/FlipperPA/django-s3-sqlite/blob/8ca00ae642655389fe62ed619db8671ca9910943/shared-objects/python-3-8/_sqlite3.so?raw=true
   - openssl aes-256-cbc -k $DECRYPT_PASSWORD -in zappa_settings.json.enc -out zappa_settings.json -d
 deploy:
-  - docker build -t zappa-lambda .
-  - docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY zappa-lambda
-  - DJANGO_CONFIGURATION=ProdConfig poetry run python manage.py collectstatic --noinput
+  provider: script
+  script: docker build -t zappa-lambda . && docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY zappa-lambda && DJANGO_CONFIGURATION=ProdConfig poetry run python manage.py collectstatic --noinput
+  on:
+    branch: master
