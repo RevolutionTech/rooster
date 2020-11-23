@@ -49,11 +49,5 @@ def ci_deploy(c):
     """
     Perform pre-deploy steps needed in CI and then deploy.
     """
-    c.run(
-        "curl -L "
-        "https://github.com/FlipperPA/django-s3-sqlite/blob/8ca00ae642655389fe62ed619db8671ca9910943"
-        "/shared-objects/python-3-8/_sqlite3.so?raw=true "
-        "--create-dirs -o lib/_sqlite3.so"
-    )
     decrypt_openssl(c, "zappa_settings.json")
     deploy(c)
