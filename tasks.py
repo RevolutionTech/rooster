@@ -12,6 +12,26 @@ def check(c):
     c.run("./manage.py makemigrations --check")  # validate no outstanding model changes
 
 
+@task(help={"filename": "The filename to encrypt."})
+def encrypt_openssl(c, filename):
+    """
+    Generate an encrypted version of the file using OpenSSL.
+    """
+    c.run(
+        f"openssl aes-256-cbc -k $DECRYPT_PASSWORD -in {filename} -out {filename}.enc"
+    )
+
+
+@task(help={"filename": "The filename (not including .enc) to decrypt."})
+def decrypt_openssl(c, filename):
+    """
+    Generate an decrypted version of the file using OpenSSL.
+    """
+    c.run(
+        f"openssl aes-256-cbc -k $DECRYPT_PASSWORD -in {filename}.enc -out {filename} -d"
+    )
+
+
 @task
 def deploy(c):
     """
@@ -35,7 +55,5 @@ def ci_deploy(c):
         "/shared-objects/python-3-8/_sqlite3.so?raw=true "
         "--create-dirs -o lib/_sqlite3.so"
     )
-    c.run(
-        "openssl aes-256-cbc -k $DECRYPT_PASSWORD -in zappa_settings.json.enc -out zappa_settings.json -d"
-    )
+    decrypt_openssl(c, "zappa_settings.json")
     deploy(c)
