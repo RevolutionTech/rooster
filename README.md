@@ -22,21 +22,18 @@ With everything installed and all files in place, you may now create the databas
 
 ### Deployment
 
-Rooster is deployed as a `zappa` app on AWS Lambda. To modify the deployment settings, first you will need to decrypt the `zappa_settings.json.enc` to `zappa_settings.json`:
+Rooster is deployed as a `zappa` app on AWS Lambda. To modify the deployment settings, first you will need to decrypt `zappa_settings.json`:
 
-    openssl aes-256-cbc -k $DECRYPT_PASSWORD -in zappa_settings.json.enc -out zappa_settings.json -d
+    DECRYPT_PASSWORD=abc123 poetry run inv decrypt-openssl zappa_settings.json
 
-where `$DECRYPT_PASSWORD` contains the key that the settings were encrypted with.
+where `DECRYPT_PASSWORD` is assigned to the key that the settings were encrypted with.
 
-Then, generate a Docker container and run the container to execute zappa commands, such as `deploy`:
+Then, generate a Docker container and run the container to execute zappa commands, such as `zappa update`:
 
-    poetry run zappa deploy
+    poetry run inv deploy
 
-Once deployed, you will need to set environment variables on the generated Lambda. See `ProdConfig` for additional environment variables used in production.
+The `inv deploy` command also updates static files via `./manage.py collectstatic`.
 
-You may also need to update `ALLOWED_HOSTS` in `ProdConfig` to match the assigned URL for the Lambda. Once completed, the assigned URL should be running Rooster.
+Once deployed, you will need to set environment variables on the generated Lambda. See `ProdConfig` for additional environment variables used in production. You may also need to update `ALLOWED_HOSTS` in `ProdConfig` to match the assigned URL for the Lambda. Once completed, the assigned URL should be running Rooster.
 
-If any changes to `zappa_settings.json` are made, the file should be re-encrypted before being committed. The following bash functions may be helpful for encrypting/decrypting:
-
-    function encrypt_openssl () { openssl aes-256-cbc -k $DECRYPT_PASSWORD -in "$1" -out "$1".enc; }
-    function decrypt_openssl () { openssl aes-256-cbc -k $DECRYPT_PASSWORD -in "$1".enc -out "$1" -d; }
+If any changes to `zappa_settings.json` are made, the file should be re-encrypted before being committed. You can use the `encrypt-openssl` and `decrypt-openssl` invoke commands to do this.
