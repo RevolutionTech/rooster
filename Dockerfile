@@ -12,6 +12,7 @@ RUN ./configure && make sqlite3.c
 WORKDIR /usr/
 RUN git clone https://github.com/coleifer/pysqlite3
 WORKDIR /usr/pysqlite3/
+RUN git checkout 40c8c1ed637017cdd775f772d764640ef6afb5f4
 RUN cp /usr/sqlite-33001/sqlite3.[ch] .
 RUN python setup.py build_static && python setup.py install
 
