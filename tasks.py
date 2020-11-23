@@ -2,7 +2,7 @@ from invoke import task
 
 
 @task
-def clean(c):
+def check(c):
     """
     Perform all checks.
     """
