@@ -133,3 +133,12 @@ class ProdConfig(BaseConfig):
     STATIC_URL = f"https://{AWS_S3_BUCKET_NAME_STATIC}.s3.amazonaws.com/{AWS_S3_KEY_PREFIX_STATIC}/"
     AWS_ACCESS_KEY_ID = values.SecretValue()
     AWS_SECRET_ACCESS_KEY = values.SecretValue()
+
+
+# Config for running ./manage.py collectstatic
+# without requiring secrets that are unused by the command
+class ProdCollectStaticConfig(ProdConfig):
+
+    SECRET_KEY = "dummyvalue"
+    SOCIAL_AUTH_GITHUB_KEY = "dummyvalue"
+    SOCIAL_AUTH_GITHUB_SECRET = "dummyvalue"
