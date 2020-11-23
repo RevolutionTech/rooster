@@ -22,11 +22,11 @@ With everything installed and all files in place, you may now create the databas
 
 ### Deployment
 
-Rooster is deployed as a `zappa` app on AWS Lambda. To modify the deployment settings, first you will need to decrypt the `zappa_settings.json`:
+Rooster is deployed as a `zappa` app on AWS Lambda. To modify the deployment settings, first you will need to decrypt `zappa_settings.json`:
 
     DECRYPT_PASSWORD=abc123 poetry run inv decrypt-openssl zappa_settings.json
 
-where `$DECRYPT_PASSWORD` contains the key that the settings were encrypted with.
+where `DECRYPT_PASSWORD` is assigned to the key that the settings were encrypted with.
 
 Then, generate a Docker container and run the container to execute zappa commands, such as `zappa update`:
 
