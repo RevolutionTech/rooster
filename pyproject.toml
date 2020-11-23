@@ -25,6 +25,7 @@ pyupgrade = "^2.7"
 coverage = "^5.3"
 factory-boy = "^3.1"
 isort = "^5.6.4"
+invoke = "^1.4.1"
 
 [tool.isort]
 profile = "black"

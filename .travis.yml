@@ -14,10 +14,7 @@ before_script:
   - cp .env-sample .env
 
 script:
-  - poetry run pyupgrade --py38-plus $(find . -name '*.py')
-  - poetry run isort . --check
-  - poetry run black . --check
-  - poetry run ./manage.py makemigrations --check  # validate no outstanding model changes
+  - poetry run inv clean
   - poetry run coverage run ./manage.py test
 
 after_success:
@@ -25,6 +22,6 @@ after_success:
 
 deploy:
   provider: script
-  script: curl -L https://github.com/FlipperPA/django-s3-sqlite/blob/8ca00ae642655389fe62ed619db8671ca9910943/shared-objects/python-3-8/_sqlite3.so?raw=true --create-dirs -o lib/_sqlite3.so && openssl aes-256-cbc -k $DECRYPT_PASSWORD -in zappa_settings.json.enc -out zappa_settings.json -d && docker build -t zappa-lambda . && docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY zappa-lambda && DJANGO_CONFIGURATION=ProdCollectStaticConfig poetry run python manage.py collectstatic --noinput
+  script: poetry run inv ci-deploy
   on:
     branch: master
