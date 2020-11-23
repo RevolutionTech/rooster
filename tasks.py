@@ -19,7 +19,9 @@ def deploy(c):
     """
     c.run("docker build -t zappa-lambda .")
     c.run("docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY zappa-lambda")
-    c.run("DJANGO_CONFIGURATION=ProdCollectStaticConfig poetry run python manage.py collectstatic --noinput")
+    c.run(
+        "DJANGO_CONFIGURATION=ProdCollectStaticConfig poetry run python manage.py collectstatic --noinput"
+    )
 
 
 @task
@@ -33,5 +35,7 @@ def ci_deploy(c):
         "/shared-objects/python-3-8/_sqlite3.so?raw=true "
         "--create-dirs -o lib/_sqlite3.so"
     )
-    c.run("openssl aes-256-cbc -k $DECRYPT_PASSWORD -in zappa_settings.json.enc -out zappa_settings.json -d")
+    c.run(
+        "openssl aes-256-cbc -k $DECRYPT_PASSWORD -in zappa_settings.json.enc -out zappa_settings.json -d"
+    )
     deploy(c)
