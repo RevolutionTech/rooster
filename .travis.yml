@@ -14,7 +14,7 @@ before_script:
   - cp .env-sample .env
 
 script:
-  - poetry run inv check
+  - poetry run inv check.all
   - poetry run coverage run ./manage.py test
 
 after_success:
