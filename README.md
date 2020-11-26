@@ -24,7 +24,7 @@ With everything installed and all files in place, you may now create the databas
 
 Rooster is deployed as a `zappa` app on AWS Lambda. To modify the deployment settings, first you will need to decrypt `zappa_settings.json`:
 
-    DECRYPT_PASSWORD=abc123 poetry run inv decrypt-openssl zappa_settings.json
+    DECRYPT_PASSWORD=abc123 poetry run inv openssl.decrypt zappa_settings.json
 
 where `DECRYPT_PASSWORD` is assigned to the key that the settings were encrypted with.
 
@@ -36,4 +36,4 @@ The `inv deploy` command also updates static files via `./manage.py collectstati
 
 Once deployed, you will need to set environment variables on the generated Lambda. See `ProdConfig` for additional environment variables used in production. You may also need to update `ALLOWED_HOSTS` in `ProdConfig` to match the assigned URL for the Lambda. Once completed, the assigned URL should be running Rooster.
 
-If any changes to `zappa_settings.json` are made, the file should be re-encrypted before being committed. You can use the `encrypt-openssl` and `decrypt-openssl` invoke commands to do this.
+If any changes to `zappa_settings.json` are made, the file should be re-encrypted before being committed. You can use the `openssl` invoke tasks to do this.
