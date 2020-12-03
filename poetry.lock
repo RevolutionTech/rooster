@@ -430,7 +430,7 @@ signedtoken = ["cryptography", "pyjwt (>=1.0.0)"]
 
 [[package]]
 name = "opstrich"
-version = "0.1.0"
+version = "0.2.0"
 description = "DevOps tooling, various scripts, etc."
 category = "dev"
 optional = false
@@ -846,7 +846,7 @@ wsgi-request-logger = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "140c5e236cb34a287869e1b702b9babff5a4dc6b833017906f609d9d949a39d9"
+content-hash = "312a41166f11bb6bbfa1dd7959d4b7c62efafcbd9e2854e76ac5bc9f7994ad55"
 
 [metadata.files]
 appdirs = [
@@ -1074,8 +1074,8 @@ oauthlib = [
     {file = "oauthlib-3.1.0.tar.gz", hash = "sha256:bee41cc35fcca6e988463cacc3bcb8a96224f470ca547e697b604cc697b2f889"},
 ]
 opstrich = [
-    {file = "opstrich-0.1.0-py3-none-any.whl", hash = "sha256:80e92f15b8892b543210ba735c8810767d353f597a1178a9517c738cc796b0ea"},
-    {file = "opstrich-0.1.0.tar.gz", hash = "sha256:cc1b22187bf5f92994665be351448536ddce6d1b64159c67e39f1b5c42d59b61"},
+    {file = "opstrich-0.2.0-py3-none-any.whl", hash = "sha256:2fea2652c0713a57127919c14c36f5cf8572cd27d2d48a7d8b5107eb40b5e171"},
+    {file = "opstrich-0.2.0.tar.gz", hash = "sha256:80e1d775a140ce629cfb73a1dc734f58a9bb9559eb4cf93e7a834b5df0dbdb52"},
 ]
 pathspec = [
     {file = "pathspec-0.8.1-py2.py3-none-any.whl", hash = "sha256:aa0cb481c4041bf52ffa7b0d8fa6cd3e88a2ca4879c533c9153882ee2556790d"},
