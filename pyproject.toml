@@ -22,7 +22,7 @@ djangorestframework = "^3.12.2"
 [tool.poetry.dev-dependencies]
 coverage = "^5.3"
 factory-boy = "^3.1"
-opstrich = "^0.1.0"
+opstrich = "^0.2.0"
 
 [tool.isort]
 profile = "black"
