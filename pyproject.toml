@@ -20,7 +20,7 @@ django-cryptography = "^1.0"
 djangorestframework = "^3.12.2"
 
 [tool.poetry.dev-dependencies]
-coverage = "^5.4"
+coverage = "^5.5"
 factory-boy = "^3.2"
 opstrich = "^0.2.0"
 
