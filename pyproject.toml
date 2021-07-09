@@ -15,7 +15,7 @@ PyGithub = "^1.55"
 zappa = "^0.53"
 django-s3-sqlite = "^0.0.3"
 django-s3-storage = "^0.13.4"
-jira = "^2.0"
+jira = "^3.0"
 django-cryptography = "^1.0"
 djangorestframework = "^3.12.4"
 
