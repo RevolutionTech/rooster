@@ -801,17 +801,17 @@ python-versions = "*"
 
 [[package]]
 name = "troposphere"
-version = "2.5.3"
+version = "3.0.3"
 description = "AWS CloudFormation creation library"
 category = "main"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+python-versions = ">=3.6.2"
 
 [package.dependencies]
-cfn_flip = ">=1.0.2"
+cfn-flip = ">=1.0.2"
 
 [package.extras]
-policy = ["awacs (>=0.8)"]
+policy = ["awacs (>=2.0.0)"]
 
 [[package]]
 name = "typed-ast"
@@ -886,6 +886,7 @@ description = "Server-less Python Web Services for AWS Lambda and API Gateway"
 category = "main"
 optional = false
 python-versions = "*"
+develop = false
 
 [package.dependencies]
 argcomplete = "*"
@@ -903,9 +904,15 @@ requests = ">=2.20.0"
 six = "*"
 toml = "*"
 tqdm = "*"
-troposphere = "*"
+troposphere = ">=3.0"
 Werkzeug = "<1.0"
 wsgi-request-logger = "*"
+
+[package.source]
+type = "git"
+url = "https://github.com/zappa/Zappa.git"
+reference = "89e99174ded0abdcbc5740c57c25baf93e55d468"
+resolved_reference = "89e99174ded0abdcbc5740c57c25baf93e55d468"
 
 [[package]]
 name = "zipp"
@@ -922,7 +929,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "1ccb663ef84d2dcb5b7d0b6917e38b8a7e2fffc03003da52850b95a73ae7a838"
+content-hash = "9e5188fd5a467d3b61e162c9cdde9748bb8d4f80ccaa8a3522e93f25bdb97b10"
 
 [metadata.files]
 appdirs = [
@@ -1351,7 +1358,8 @@ tqdm = [
     {file = "tqdm-4.19.1.tar.gz", hash = "sha256:fa6d2ea6285f56e75d7efe9259805deadc450f16066a1f82ad0629ea9be2cd0f"},
 ]
 troposphere = [
-    {file = "troposphere-2.5.3.tar.gz", hash = "sha256:fbf3592fb0559102e2abf15aa26cadbeced3390565ee294e6df0fb2d421bf759"},
+    {file = "troposphere-3.0.3-py3-none-any.whl", hash = "sha256:724604dd84eea0df2815f1d5ccf99e7d61ddd1d932798c688f132d3ca633c7d3"},
+    {file = "troposphere-3.0.3.tar.gz", hash = "sha256:22155a572a66e84a3ffe0a1107ea5a6a54ed769f8a6b950477679553216a4882"},
 ]
 typed-ast = [
     {file = "typed_ast-1.4.1-cp35-cp35m-manylinux1_i686.whl", hash = "sha256:73d785a950fc82dd2a25897d525d003f6378d1cb23ab305578394694202a58c3"},
@@ -1408,10 +1416,7 @@ wrapt = [
 wsgi-request-logger = [
     {file = "wsgi-request-logger-0.4.6.tar.gz", hash = "sha256:445d7ec52799562f812006394d0b4a7064b37084c6ea6bd74ea7a2136c97ed83"},
 ]
-zappa = [
-    {file = "zappa-0.53.0-py3-none-any.whl", hash = "sha256:46a0afc1218de17bf713a8f4cfcb4dde2ba0466d18088918b9d2bc22ec6f9434"},
-    {file = "zappa-0.53.0.tar.gz", hash = "sha256:a3623197a1dd30faa028f62fda1b7ba5dcbb643bc6ac43ad4cffdfd89a3b85c8"},
-]
+zappa = []
 zipp = [
     {file = "zipp-3.5.0-py3-none-any.whl", hash = "sha256:957cfda87797e389580cb8b9e3870841ca991e2125350677b2ca83a0e99390a3"},
     {file = "zipp-3.5.0.tar.gz", hash = "sha256:f5812b1e007e48cff63449a5e9f4e7ebea716b4111f9c4f9a645f91d579bf0c4"},

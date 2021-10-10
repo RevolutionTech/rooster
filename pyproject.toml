@@ -12,7 +12,7 @@ python-dotenv = "^0.19.0"
 django-configurations = "^2.2"
 social-auth-app-django = "^5.0"
 PyGithub = "^1.55"
-zappa = "^0.53"
+zappa = { git = "https://github.com/zappa/Zappa.git", rev = "89e99174ded0abdcbc5740c57c25baf93e55d468" }
 django-s3-sqlite = "^0.0.3"
 django-s3-storage = "^0.13.4"
 jira = "^3.0"
