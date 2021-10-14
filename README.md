@@ -2,7 +2,7 @@
 #### A tool to review activity on GitHub for daily standup
 
 ![CI](https://github.com/RevolutionTech/rooster/actions/workflows/ci.yml/badge.svg)
-[![codecov](https://codecov.io/gh/RevolutionTech/rooster/branch/master/graph/badge.svg)](https://codecov.io/gh/RevolutionTech/rooster)
+[![codecov](https://codecov.io/gh/RevolutionTech/rooster/branch/main/graph/badge.svg)](https://codecov.io/gh/RevolutionTech/rooster)
 
 ## Setup
 
