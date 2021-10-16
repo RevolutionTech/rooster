@@ -7,17 +7,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "argcomplete"
-version = "1.9.3"
-description = "Bash tab completion for argparse"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.extras]
-test = ["coverage", "flake8", "pexpect", "wheel"]
-
-[[package]]
 name = "asgiref"
 version = "3.3.4"
 description = "ASGI specs, helper code, and adapters"
@@ -51,35 +40,6 @@ colorama = ["colorama (>=0.4.3)"]
 d = ["aiohttp (>=3.3.2)", "aiohttp-cors"]
 
 [[package]]
-name = "boto3"
-version = "1.17.108"
-description = "The AWS SDK for Python"
-category = "main"
-optional = false
-python-versions = ">= 2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
-
-[package.dependencies]
-botocore = ">=1.20.108,<1.21.0"
-jmespath = ">=0.7.1,<1.0.0"
-s3transfer = ">=0.4.0,<0.5.0"
-
-[[package]]
-name = "botocore"
-version = "1.20.108"
-description = "Low-level, data-driven core of boto 3."
-category = "main"
-optional = false
-python-versions = ">= 2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
-
-[package.dependencies]
-jmespath = ">=0.7.1,<1.0.0"
-python-dateutil = ">=2.1,<3.0.0"
-urllib3 = ">=1.25.4,<1.27"
-
-[package.extras]
-crt = ["awscrt (==0.11.24)"]
-
-[[package]]
 name = "certifi"
 version = "2019.11.28"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -99,19 +59,6 @@ python-versions = "*"
 pycparser = "*"
 
 [[package]]
-name = "cfn-flip"
-version = "1.2.2"
-description = "Convert AWS CloudFormation templates between JSON and YAML formats"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-Click = "*"
-PyYAML = ">=4.1"
-six = "*"
-
-[[package]]
 name = "chardet"
 version = "3.0.4"
 description = "Universal encoding detector for Python 2 and 3"
@@ -123,7 +70,7 @@ python-versions = "*"
 name = "click"
 version = "7.1.2"
 description = "Composable command line interface toolkit"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
@@ -239,29 +186,6 @@ cryptography = "*"
 django-appconf = "*"
 
 [[package]]
-name = "django-s3-sqlite"
-version = "0.0.3"
-description = "An AWS S3-hosted SQLite database backend for Django."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-Django = ">=2"
-
-[[package]]
-name = "django-s3-storage"
-version = "0.13.4"
-description = "Django Amazon S3 file storage."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-boto3 = ">=1.4.4,<2"
-django = ">=1.11"
-
-[[package]]
 name = "djangorestframework"
 version = "3.12.4"
 description = "Web APIs for Django, made easy."
@@ -271,14 +195,6 @@ python-versions = ">=3.5"
 
 [package.dependencies]
 django = ">=2.2"
-
-[[package]]
-name = "durationpy"
-version = "0.5"
-description = "Module for converting between datetime.timedelta and Go's Duration strings."
-category = "main"
-optional = false
-python-versions = "*"
 
 [[package]]
 name = "factory-boy"
@@ -307,22 +223,6 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 python-dateutil = ">=2.4"
 six = ">=1.10"
 text-unidecode = "1.3"
-
-[[package]]
-name = "future"
-version = "0.16.0"
-description = "Clean single-source support for Python 3 and 2"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
-name = "hjson"
-version = "3.0.1"
-description = "Hjson, a user interface for JSON."
-category = "main"
-optional = false
-python-versions = "*"
 
 [[package]]
 name = "idna"
@@ -402,28 +302,6 @@ docs = ["Sphinx (>=2.2.0)", "sphinx-rtd-theme (>=0.4.3)"]
 opt = ["filemagic (>=1.6)", "pyjwt", "requests-jwt", "requests-kerberos"]
 
 [[package]]
-name = "jmespath"
-version = "0.9.3"
-description = "JSON Matching Expressions"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
-name = "kappa"
-version = "0.6.0"
-description = "A CLI tool for AWS Lambda developers"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-boto3 = ">=1.2.3"
-click = ">=5.1"
-placebo = ">=0.8.1"
-PyYAML = ">=3.11"
-
-[[package]]
 name = "keyring"
 version = "23.0.1"
 description = "Store and access your passwords safely."
@@ -485,26 +363,6 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
-name = "pip-tools"
-version = "4.5.1"
-description = "pip-tools keeps your pinned dependencies fresh."
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-
-[package.dependencies]
-click = ">=7"
-six = "*"
-
-[[package]]
-name = "placebo"
-version = "0.9.0"
-description = "Make boto3 calls that look real but have no effect"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "pycparser"
 version = "2.19"
 description = "C parser in Python"
@@ -563,7 +421,7 @@ tests = ["pytest (>=3.2.1,!=3.3.0)", "hypothesis (>=3.27.0)"]
 name = "python-dateutil"
 version = "2.6.1"
 description = "Extensions to the standard Python datetime module"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -580,17 +438,6 @@ python-versions = ">=3.5"
 
 [package.extras]
 cli = ["click (>=5.0)"]
-
-[[package]]
-name = "python-slugify"
-version = "1.2.4"
-description = "A Python Slugify application that handles Unicode"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-Unidecode = ">=0.04.16"
 
 [[package]]
 name = "python3-openid"
@@ -629,14 +476,6 @@ description = ""
 category = "main"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "pyyaml"
-version = "5.2"
-description = "YAML parser and emitter for Python"
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "regex"
@@ -689,20 +528,6 @@ python-versions = "*"
 
 [package.dependencies]
 requests = ">=2.0.1,<3.0.0"
-
-[[package]]
-name = "s3transfer"
-version = "0.4.2"
-description = "An Amazon S3 Transfer Manager"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-botocore = ">=1.12.36,<2.0a.0"
-
-[package.extras]
-crt = ["botocore[crt] (>=1.20.29,<2.0a.0)"]
 
 [[package]]
 name = "secretstorage"
@@ -787,31 +612,9 @@ python-versions = ">=3.6.1"
 name = "toml"
 version = "0.10.1"
 description = "Python Library for Tom's Obvious, Minimal Language"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "tqdm"
-version = "4.19.1"
-description = "Fast, Extensible Progress Meter"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
-name = "troposphere"
-version = "3.0.3"
-description = "AWS CloudFormation creation library"
-category = "main"
-optional = false
-python-versions = ">=3.6.2"
-
-[package.dependencies]
-cfn-flip = ">=1.0.2"
-
-[package.extras]
-policy = ["awacs (>=2.0.0)"]
 
 [[package]]
 name = "typed-ast"
@@ -830,14 +633,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "unidecode"
-version = "1.1.1"
-description = "ASCII transliterations of Unicode text"
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-
-[[package]]
 name = "urllib3"
 version = "1.25.7"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
@@ -851,68 +646,12 @@ secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "cer
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
-name = "werkzeug"
-version = "0.16.0"
-description = "The comprehensive WSGI web application library."
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-
-[package.extras]
-dev = ["pytest", "coverage", "tox", "sphinx", "pallets-sphinx-themes", "sphinx-issues"]
-termcolor = ["termcolor"]
-watchdog = ["watchdog"]
-
-[[package]]
 name = "wrapt"
 version = "1.11.2"
 description = "Module for decorators, wrappers and monkey patching."
 category = "main"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "wsgi-request-logger"
-version = "0.4.6"
-description = "Apache-like combined logging for WSGI Web Applications"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
-name = "zappa"
-version = "0.53.0"
-description = "Server-less Python Web Services for AWS Lambda and API Gateway"
-category = "main"
-optional = false
-python-versions = "*"
-develop = false
-
-[package.dependencies]
-argcomplete = "*"
-boto3 = ">=1.17.28"
-durationpy = "*"
-future = "*"
-hjson = "*"
-jmespath = "*"
-kappa = "0.6.0"
-pip-tools = "*"
-python-dateutil = "*"
-python-slugify = "*"
-PyYAML = "*"
-requests = ">=2.20.0"
-six = "*"
-toml = "*"
-tqdm = "*"
-troposphere = ">=3.0"
-Werkzeug = "<1.0"
-wsgi-request-logger = "*"
-
-[package.source]
-type = "git"
-url = "https://github.com/zappa/Zappa.git"
-reference = "89e99174ded0abdcbc5740c57c25baf93e55d468"
-resolved_reference = "89e99174ded0abdcbc5740c57c25baf93e55d468"
 
 [[package]]
 name = "zipp"
@@ -929,16 +668,12 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "9e5188fd5a467d3b61e162c9cdde9748bb8d4f80ccaa8a3522e93f25bdb97b10"
+content-hash = "09b714caf9652c82b78e2e187ccc6f59556775e99be0c4bfcdd3ec7417ac4dbe"
 
 [metadata.files]
 appdirs = [
     {file = "appdirs-1.4.4-py2.py3-none-any.whl", hash = "sha256:a841dacd6b99318a741b166adb07e19ee71a274450e68237b4650ca1055ab128"},
     {file = "appdirs-1.4.4.tar.gz", hash = "sha256:7d5d0167b2b1ba821647616af46a749d1c653740dd0d2415100fe26e27afdf41"},
-]
-argcomplete = [
-    {file = "argcomplete-1.9.3-py2.py3-none-any.whl", hash = "sha256:c079ceb0b72d4d4e03531ed77e6071babb9d42c3f790d7def2c41295b4990b44"},
-    {file = "argcomplete-1.9.3.tar.gz", hash = "sha256:d97b7f3cfaa4e494ad59ed6d04c938fc5ed69b590bd8f53274e258fb1119bd1b"},
 ]
 asgiref = [
     {file = "asgiref-3.3.4-py3-none-any.whl", hash = "sha256:92906c611ce6c967347bbfea733f13d6313901d54dcca88195eaeb52b2a8e8ee"},
@@ -946,14 +681,6 @@ asgiref = [
 ]
 black = [
     {file = "black-20.8b1.tar.gz", hash = "sha256:1c02557aa099101b9d21496f8a914e9ed2222ef70336404eeeac8edba836fbea"},
-]
-boto3 = [
-    {file = "boto3-1.17.108-py2.py3-none-any.whl", hash = "sha256:484bba256137c2d2f8351175553dee0e888e8bd5872f5406c8984e02715acf4d"},
-    {file = "boto3-1.17.108.tar.gz", hash = "sha256:10122ff0f942d7400b18b726edaead20600178f8246cb21b40420073350613b5"},
-]
-botocore = [
-    {file = "botocore-1.20.108-py2.py3-none-any.whl", hash = "sha256:7667ef69001708afa796d2e79910230715e8542a910820581bf4623a5d3b0d47"},
-    {file = "botocore-1.20.108.tar.gz", hash = "sha256:f4686d2ccf68dfcd90d2591695938fd0906ae0a7121f792d193b0f000a5d8872"},
 ]
 certifi = [
     {file = "certifi-2019.11.28-py2.py3-none-any.whl", hash = "sha256:017c25db2a153ce562900032d5bc68e9f191e44e9a0f762f373977de9df1fbb3"},
@@ -993,10 +720,6 @@ cffi = [
     {file = "cffi-1.13.2-cp38-cp38-win32.whl", hash = "sha256:6d4f18483d040e18546108eb13b1dfa1000a089bcf8529e30346116ea6240506"},
     {file = "cffi-1.13.2-cp38-cp38-win_amd64.whl", hash = "sha256:2781e9ad0e9d47173c0093321bb5435a9dfae0ed6a762aabafa13108f5f7b2ba"},
     {file = "cffi-1.13.2.tar.gz", hash = "sha256:599a1e8ff057ac530c9ad1778293c665cb81a791421f46922d80a86473c13346"},
-]
-cfn-flip = [
-    {file = "cfn_flip-1.2.2-py3-none-any.whl", hash = "sha256:40fc5e279fd99ebebec164b2b9e6f7b76f22e0ae42b3b48e45f70010bd082619"},
-    {file = "cfn_flip-1.2.2.tar.gz", hash = "sha256:8ddd026cef53cd11a4a27e6dc239417a2bbf86587ba2e59fd6bf615ad8dec516"},
 ]
 chardet = [
     {file = "chardet-3.0.4-py2.py3-none-any.whl", hash = "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"},
@@ -1100,19 +823,9 @@ django-cryptography = [
     {file = "django-cryptography-1.0.tar.gz", hash = "sha256:13de5cf8f1250744c104b9e24774d03aa6d8488959dd40cdc016934043652445"},
     {file = "django_cryptography-1.0-py3-none-any.whl", hash = "sha256:0a99980b1cee7cc5e52f9b20b322620fea7cc124d770273e7bd285b20fd9d222"},
 ]
-django-s3-sqlite = [
-    {file = "django-s3-sqlite-0.0.3.tar.gz", hash = "sha256:a4e6bc25fe3c38d17cbb6cf31ca5735289186a24151dc21ebc819f6023e623e2"},
-    {file = "django_s3_sqlite-0.0.3-py3-none-any.whl", hash = "sha256:ebdc639e5fc579bde9c7d50abfa7e543ce6b6759bb3ac219ed3bfa7e0de2b84f"},
-]
-django-s3-storage = [
-    {file = "django-s3-storage-0.13.4.tar.gz", hash = "sha256:4caa2e993ca2f3762d05d6f1ab2a291cad57d08fd104e6808b6c6278204fa836"},
-]
 djangorestframework = [
     {file = "djangorestframework-3.12.4-py3-none-any.whl", hash = "sha256:6d1d59f623a5ad0509fe0d6bfe93cbdfe17b8116ebc8eda86d45f6e16e819aaf"},
     {file = "djangorestframework-3.12.4.tar.gz", hash = "sha256:f747949a8ddac876e879190df194b925c177cdeb725a099db1460872f7c0a7f2"},
-]
-durationpy = [
-    {file = "durationpy-0.5.tar.gz", hash = "sha256:5ef9416b527b50d722f34655becfb75e49228eb82f87b855ed1911b3314b5408"},
 ]
 factory-boy = [
     {file = "factory_boy-3.2.0-py2.py3-none-any.whl", hash = "sha256:1d3db4b44b8c8c54cdd8b83ae4bdb9aeb121e464400035f1f03ae0e1eade56a4"},
@@ -1121,13 +834,6 @@ factory-boy = [
 faker = [
     {file = "Faker-2.0.4-py2.py3-none-any.whl", hash = "sha256:48c03580720e0b46538d528b1296e4e5b24a809dcaf33a7dddec719489a9edb8"},
     {file = "Faker-2.0.4.tar.gz", hash = "sha256:6327c665c0d8721280b3036d9c9e851c60092bc1f30c8394cc433f8723e2bda5"},
-]
-future = [
-    {file = "future-0.16.0.tar.gz", hash = "sha256:e39ced1ab767b5936646cedba8bcce582398233d6a627067d4c6a454c90cfedb"},
-]
-hjson = [
-    {file = "hjson-3.0.1-py3-none-any.whl", hash = "sha256:febbfbd43e64d2a822efe8b6c720683954b48c0bb1532170c05a7fc8470d3426"},
-    {file = "hjson-3.0.1.tar.gz", hash = "sha256:1d1727faa6aaef2973921877125a3ab7c5f6d34b93233179d01770f41fab51f9"},
 ]
 idna = [
     {file = "idna-2.8-py2.py3-none-any.whl", hash = "sha256:ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"},
@@ -1154,14 +860,6 @@ jira = [
     {file = "jira-3.0.1-py3-none-any.whl", hash = "sha256:bc8d1dfeb51eb27ec90b455f2013e675b309dada00095936e65e0459a2f0df84"},
     {file = "jira-3.0.1.tar.gz", hash = "sha256:5bd8f4199632bf91fcfb4ba25ad2226991d403923b75f7cd2b051b4571492831"},
 ]
-jmespath = [
-    {file = "jmespath-0.9.3-py2.py3-none-any.whl", hash = "sha256:f11b4461f425740a1d908e9a3f7365c3d2e569f6ca68a2ff8bc5bcd9676edd63"},
-    {file = "jmespath-0.9.3.tar.gz", hash = "sha256:6a81d4c9aa62caf061cb517b4d9ad1dd300374cd4706997aff9cd6aedd61fc64"},
-]
-kappa = [
-    {file = "kappa-0.6.0-py2-none-any.whl", hash = "sha256:4d6b7b3accce4a0aaaac92b36237a6304f0f2fffbbe3caea3f7c9f52d12c9989"},
-    {file = "kappa-0.6.0.tar.gz", hash = "sha256:4b5b372872f25d619e427e04282551048dc975a107385b076b3ffc6406a15833"},
-]
 keyring = [
     {file = "keyring-23.0.1-py3-none-any.whl", hash = "sha256:8f607d7d1cc502c43a932a275a56fe47db50271904513a379d39df1af277ac48"},
     {file = "keyring-23.0.1.tar.gz", hash = "sha256:045703609dd3fccfcdb27da201684278823b72af515aedec1a8515719a038cb8"},
@@ -1181,13 +879,6 @@ opstrich = [
 pathspec = [
     {file = "pathspec-0.8.1-py2.py3-none-any.whl", hash = "sha256:aa0cb481c4041bf52ffa7b0d8fa6cd3e88a2ca4879c533c9153882ee2556790d"},
     {file = "pathspec-0.8.1.tar.gz", hash = "sha256:86379d6b86d75816baba717e64b1a3a3469deb93bb76d613c9ce79edc5cb68fd"},
-]
-pip-tools = [
-    {file = "pip-tools-4.5.1.tar.gz", hash = "sha256:693f30e451875796b1b25203247f0b4cf48a4c4a5ab7341f4f33ffd498cdcc98"},
-    {file = "pip_tools-4.5.1-py2.py3-none-any.whl", hash = "sha256:be9c796aa88b2eec5cabf1323ba1cb60a08212b84bfb75b8b4037a8ef8cb8cb6"},
-]
-placebo = [
-    {file = "placebo-0.9.0.tar.gz", hash = "sha256:03157f8527bbc2965b71b88f4a139ef8038618b346787f20d63e3c5da541b047"},
 ]
 pycparser = [
     {file = "pycparser-2.19.tar.gz", hash = "sha256:a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"},
@@ -1228,10 +919,6 @@ python-dotenv = [
     {file = "python-dotenv-0.19.0.tar.gz", hash = "sha256:f521bc2ac9a8e03c736f62911605c5d83970021e3fa95b37d769e2bbbe9b6172"},
     {file = "python_dotenv-0.19.0-py2.py3-none-any.whl", hash = "sha256:aae25dc1ebe97c420f50b81fb0e5c949659af713f31fdb63c749ca68748f34b1"},
 ]
-python-slugify = [
-    {file = "python-slugify-1.2.4.tar.gz", hash = "sha256:57a385df7a1c6dbd15f7666eaff0ff29d3f60363b228b1197c5308ed3ba5f824"},
-    {file = "python_slugify-1.2.4-py2.py3-none-any.whl", hash = "sha256:c3733135d3b184196fdb8844f6a74bbfb9cf6720d1dcce3254bdc434353f938f"},
-]
 python3-openid = [
     {file = "python3-openid-3.1.0.tar.gz", hash = "sha256:628d365d687e12da12d02c6691170f4451db28d6d68d050007e4a40065868502"},
     {file = "python3_openid-3.1.0-py3-none-any.whl", hash = "sha256:0086da6b6ef3161cfe50fb1ee5cceaf2cda1700019fda03c2c5c440ca6abe4fa"},
@@ -1247,19 +934,6 @@ pyupgrade = [
 pywin32-ctypes = [
     {file = "pywin32-ctypes-0.2.0.tar.gz", hash = "sha256:24ffc3b341d457d48e8922352130cf2644024a4ff09762a2261fd34c36ee5942"},
     {file = "pywin32_ctypes-0.2.0-py2.py3-none-any.whl", hash = "sha256:9dc2d991b3479cc2df15930958b674a48a227d5361d413827a4cfd0b5876fc98"},
-]
-pyyaml = [
-    {file = "PyYAML-5.2-cp27-cp27m-win32.whl", hash = "sha256:35ace9b4147848cafac3db142795ee42deebe9d0dad885ce643928e88daebdcc"},
-    {file = "PyYAML-5.2-cp27-cp27m-win_amd64.whl", hash = "sha256:ebc4ed52dcc93eeebeae5cf5deb2ae4347b3a81c3fa12b0b8c976544829396a4"},
-    {file = "PyYAML-5.2-cp35-cp35m-win32.whl", hash = "sha256:38a4f0d114101c58c0f3a88aeaa44d63efd588845c5a2df5290b73db8f246d15"},
-    {file = "PyYAML-5.2-cp35-cp35m-win_amd64.whl", hash = "sha256:483eb6a33b671408c8529106df3707270bfacb2447bf8ad856a4b4f57f6e3075"},
-    {file = "PyYAML-5.2-cp36-cp36m-win32.whl", hash = "sha256:7f38e35c00e160db592091751d385cd7b3046d6d51f578b29943225178257b31"},
-    {file = "PyYAML-5.2-cp36-cp36m-win_amd64.whl", hash = "sha256:0e7f69397d53155e55d10ff68fdfb2cf630a35e6daf65cf0bdeaf04f127c09dc"},
-    {file = "PyYAML-5.2-cp37-cp37m-win32.whl", hash = "sha256:e4c015484ff0ff197564917b4b4246ca03f411b9bd7f16e02a2f586eb48b6d04"},
-    {file = "PyYAML-5.2-cp37-cp37m-win_amd64.whl", hash = "sha256:4b6be5edb9f6bb73680f5bf4ee08ff25416d1400fbd4535fe0069b2994da07cd"},
-    {file = "PyYAML-5.2-cp38-cp38-win32.whl", hash = "sha256:8100c896ecb361794d8bfdb9c11fce618c7cf83d624d73d5ab38aef3bc82d43f"},
-    {file = "PyYAML-5.2-cp38-cp38-win_amd64.whl", hash = "sha256:2e9f0b7c5914367b0916c3c104a024bb68f269a486b9d04a2e8ac6f6597b7803"},
-    {file = "PyYAML-5.2.tar.gz", hash = "sha256:c0ee8eca2c582d29c3c2ec6e2c4f703d1b7f1fb10bc72317355a746057e7346c"},
 ]
 regex = [
     {file = "regex-2020.11.13-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:8b882a78c320478b12ff024e81dc7d43c1462aa4a3341c754ee65d857a521f85"},
@@ -1317,10 +991,6 @@ requests-toolbelt = [
     {file = "requests-toolbelt-0.9.1.tar.gz", hash = "sha256:968089d4584ad4ad7c171454f0a5c6dac23971e9472521ea3b6d49d610aa6fc0"},
     {file = "requests_toolbelt-0.9.1-py2.py3-none-any.whl", hash = "sha256:380606e1d10dc85c3bd47bf5a6095f815ec007be7a8b69c878507068df059e6f"},
 ]
-s3transfer = [
-    {file = "s3transfer-0.4.2-py2.py3-none-any.whl", hash = "sha256:9b3752887a2880690ce628bc263d6d13a3864083aeacff4890c1c9839a5eb0bc"},
-    {file = "s3transfer-0.4.2.tar.gz", hash = "sha256:cb022f4b16551edebbb31a377d3f09600dbada7363d8c5db7976e7f47732e1b2"},
-]
 secretstorage = [
     {file = "SecretStorage-3.3.1-py3-none-any.whl", hash = "sha256:422d82c36172d88d6a0ed5afdec956514b189ddbfb72fefab0c8a1cee4eaf71f"},
     {file = "SecretStorage-3.3.1.tar.gz", hash = "sha256:fd666c51a6bf200643495a04abb261f83229dcb6fd8472ec393df7ffc8b6f195"},
@@ -1352,14 +1022,6 @@ tokenize-rt = [
 toml = [
     {file = "toml-0.10.1-py2.py3-none-any.whl", hash = "sha256:bda89d5935c2eac546d648028b9901107a595863cb36bae0c73ac804a9b4ce88"},
     {file = "toml-0.10.1.tar.gz", hash = "sha256:926b612be1e5ce0634a2ca03470f95169cf16f939018233a670519cb4ac58b0f"},
-]
-tqdm = [
-    {file = "tqdm-4.19.1-py2.py3-none-any.whl", hash = "sha256:ba650e08b8b102923a05896bf9d7e1c9cdc20b484156df0511a4bbf1f6b6f89b"},
-    {file = "tqdm-4.19.1.tar.gz", hash = "sha256:fa6d2ea6285f56e75d7efe9259805deadc450f16066a1f82ad0629ea9be2cd0f"},
-]
-troposphere = [
-    {file = "troposphere-3.0.3-py3-none-any.whl", hash = "sha256:724604dd84eea0df2815f1d5ccf99e7d61ddd1d932798c688f132d3ca633c7d3"},
-    {file = "troposphere-3.0.3.tar.gz", hash = "sha256:22155a572a66e84a3ffe0a1107ea5a6a54ed769f8a6b950477679553216a4882"},
 ]
 typed-ast = [
     {file = "typed_ast-1.4.1-cp35-cp35m-manylinux1_i686.whl", hash = "sha256:73d785a950fc82dd2a25897d525d003f6378d1cb23ab305578394694202a58c3"},
@@ -1398,25 +1060,13 @@ typing-extensions = [
     {file = "typing_extensions-3.7.4.3-py3-none-any.whl", hash = "sha256:7cb407020f00f7bfc3cb3e7881628838e69d8f3fcab2f64742a5e76b2f841918"},
     {file = "typing_extensions-3.7.4.3.tar.gz", hash = "sha256:99d4073b617d30288f569d3f13d2bd7548c3a7e4c8de87db09a9d29bb3a4a60c"},
 ]
-unidecode = [
-    {file = "Unidecode-1.1.1-py2.py3-none-any.whl", hash = "sha256:1d7a042116536098d05d599ef2b8616759f02985c85b4fef50c78a5aaf10822a"},
-    {file = "Unidecode-1.1.1.tar.gz", hash = "sha256:2b6aab710c2a1647e928e36d69c21e76b453cd455f4e2621000e54b2a9b8cce8"},
-]
 urllib3 = [
     {file = "urllib3-1.25.7-py2.py3-none-any.whl", hash = "sha256:a8a318824cc77d1fd4b2bec2ded92646630d7fe8619497b142c84a9e6f5a7293"},
     {file = "urllib3-1.25.7.tar.gz", hash = "sha256:f3c5fd51747d450d4dcf6f923c81f78f811aab8205fda64b0aba34a4e48b0745"},
 ]
-werkzeug = [
-    {file = "Werkzeug-0.16.0-py2.py3-none-any.whl", hash = "sha256:e5f4a1f98b52b18a93da705a7458e55afb26f32bff83ff5d19189f92462d65c4"},
-    {file = "Werkzeug-0.16.0.tar.gz", hash = "sha256:7280924747b5733b246fe23972186c6b348f9ae29724135a6dfc1e53cea433e7"},
-]
 wrapt = [
     {file = "wrapt-1.11.2.tar.gz", hash = "sha256:565a021fd19419476b9362b05eeaa094178de64f8361e44468f9e9d7843901e1"},
 ]
-wsgi-request-logger = [
-    {file = "wsgi-request-logger-0.4.6.tar.gz", hash = "sha256:445d7ec52799562f812006394d0b4a7064b37084c6ea6bd74ea7a2136c97ed83"},
-]
-zappa = []
 zipp = [
     {file = "zipp-3.5.0-py3-none-any.whl", hash = "sha256:957cfda87797e389580cb8b9e3870841ca991e2125350677b2ca83a0e99390a3"},
     {file = "zipp-3.5.0.tar.gz", hash = "sha256:f5812b1e007e48cff63449a5e9f4e7ebea716b4111f9c4f9a645f91d579bf0c4"},

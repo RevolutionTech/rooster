@@ -24,8 +24,6 @@ class BaseConfig(Configuration):
         "django.contrib.sessions",
         "django.contrib.messages",
         "django.contrib.staticfiles",
-        "django_s3_sqlite",
-        "django_s3_storage",
         "social_django",
         "rest_framework",
         "githubapi.apps.GithubApiConfig",
@@ -107,38 +105,3 @@ class BaseConfig(Configuration):
         "handlers": {"console": {"class": "logging.StreamHandler"}},
         "root": {"handlers": ["console"], "level": "INFO"},
     }
-
-
-class ProdConfig(BaseConfig):
-
-    DEBUG = False
-    ALLOWED_HOSTS = ["standup.revolutiontech.ca"]
-    USE_X_FORWARDED_HOST = True
-
-    # Database
-    DATABASES = {
-        "default": {
-            "ENGINE": "django_s3_sqlite",
-            "NAME": "db.sqlite3",
-            "BUCKET": "rooster-sqlite3",
-        }
-    }
-
-    # Static files
-    STATICFILES_STORAGE = "django_s3_storage.storage.ManifestStaticS3Storage"
-    AWS_S3_BUCKET_NAME_STATIC = "rooster-standup"
-    AWS_S3_KEY_PREFIX_STATIC = "static"
-    AWS_S3_BUCKET_AUTH = False
-    AWS_S3_MAX_AGE_SECONDS = 60 * 60 * 24 * 365  # 1 year
-    STATIC_URL = f"https://{AWS_S3_BUCKET_NAME_STATIC}.s3.amazonaws.com/{AWS_S3_KEY_PREFIX_STATIC}/"
-    AWS_ACCESS_KEY_ID = values.SecretValue()
-    AWS_SECRET_ACCESS_KEY = values.SecretValue()
-
-
-# Config for running ./manage.py collectstatic
-# without requiring secrets that are unused by the command
-class ProdCollectStaticConfig(ProdConfig):
-
-    SECRET_KEY = "dummyvalue"
-    SOCIAL_AUTH_GITHUB_KEY = "dummyvalue"
-    SOCIAL_AUTH_GITHUB_SECRET = "dummyvalue"
