@@ -1,6 +1,12 @@
 # Rooster
 #### A tool to review activity on GitHub for daily standup
 
+## Deprecated
+
+This project is no longer being maintained by the owner. Rooster has been moved to a [Cascade](https://www.cascade.io/) workflow.
+
+---
+
 ![CI](https://github.com/RevolutionTech/rooster/actions/workflows/ci.yml/badge.svg)
 [![codecov](https://codecov.io/gh/RevolutionTech/rooster/branch/main/graph/badge.svg)](https://codecov.io/gh/RevolutionTech/rooster)
 
